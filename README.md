@@ -1,3 +1,5 @@
+This is an in-progress app that I am developing for my solo project at Prime Academy.
+
 # Prime Project
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
