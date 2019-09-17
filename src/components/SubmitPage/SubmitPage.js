@@ -21,10 +21,25 @@ class TemplateClass extends Component {
         approved: false
     };
 
+    handlerChangeofAll(event, dataKey) {
+        const fieldValue = event.target.value;
+        this.setState({
+            ...this.state,
+            [dataKey]: fieldValue,
+        })
+        console.log(this.state);
+    }
+
     render() {
         return (
             <div>
                 <h2>Submit a suggestion for Chews</h2>
+                <input
+                    type="text"
+                    placeholder="Name"
+                    onChange={(event) => this.handlerChangeofAll(event, 'name')}>
+                </input>
+                
             </div>
         );
     }
