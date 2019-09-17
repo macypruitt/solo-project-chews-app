@@ -21,7 +21,7 @@ class TemplateClass extends Component {
         approved: false
     };
 
-    handlerChangeofAll(event, dataKey) {
+    handleChangeInputText(event, dataKey) {
         const fieldValue = event.target.value;
         this.setState({
             ...this.state,
@@ -30,6 +30,17 @@ class TemplateClass extends Component {
         console.log(this.state);
     }
 
+    handleCheckbox(event,dataKey) {
+        this.setState({
+            ...this.state,
+            [dataKey]: event.target.checked
+        }, () => {
+            console.log(this.state)
+        })
+        
+    }
+
+
     render() {
         return (
             <div>
@@ -37,8 +48,22 @@ class TemplateClass extends Component {
                 <input
                     type="text"
                     placeholder="Name"
-                    onChange={(event) => this.handlerChangeofAll(event, 'name')}>
+                    onChange={(event) => this.handleChangeInputText(event, 'name')}>
                 </input>
+                <input
+                    type="text"
+                    placeholder="Address"
+                    onChange={(event) => this.handleChangeInputText(event, 'address')}>
+                </input>
+                <input
+                    type="text"
+                    placeholder="Description"
+                    onChange={(event) => this.handleChangeInputText(event, 'description')}>
+                </input>
+
+                <input type="checkbox" name="keto" value="true"
+                onChange={(event) => this.handleCheckbox(event, 'keto')} />
+                
                 
             </div>
         );
