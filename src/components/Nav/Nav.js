@@ -11,6 +11,18 @@ const Nav = (props) => (
       <h2 className="nav-title">Chews</h2>
     </Link>
     <div className="nav-right">
+    <Link className="nav-link" to="/suggest">
+        {/* Show this link if they are logged in or not,
+        but call this link 'Home' if they are logged in,
+        and call this link 'Login / Register' if they are not */}
+        Suggest Restaurant
+      </Link>
+      <Link className="nav-link" to="/map">
+        {/* Show this link if they are logged in or not,
+        but call this link 'Home' if they are logged in,
+        and call this link 'Login / Register' if they are not */}
+        Map
+      </Link>
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,

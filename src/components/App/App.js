@@ -20,7 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import MapPage from '../MapPage/MapPage';
-import SubmitPage from '../SubmitPage/SubmitPage';
+import SuggestPage from '../SuggestPage/SuggestPage';
 
 import './App.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
@@ -45,8 +45,8 @@ class App extends Component {
             This is a route anyone can see, no login necessary */}
             <Route
               exact
-              path="/submit"
-              component={SubmitPage}
+              path="/suggest"
+              component={SuggestPage}
             />
             <Route
               exact

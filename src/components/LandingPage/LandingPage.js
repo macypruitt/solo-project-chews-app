@@ -9,6 +9,12 @@ class LandingPage extends Component {
         heading: 'Class Component',
     };
 
+
+
+
+
+
+    
     onLogin = (event) => {
         this.props.history.push('/login');
     }
