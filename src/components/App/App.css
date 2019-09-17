@@ -36,6 +36,12 @@ input {
   background-color: #008183;
 }
 
+.submit-view {
+    text-align: center;
+    margin: auto;
+
+}
+
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
     background:none;

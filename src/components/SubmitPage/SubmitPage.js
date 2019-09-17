@@ -7,7 +7,7 @@ import { noConflict } from 'q';
 // value setup. When making a new component be sure to replace 
 // the component name TemplateClass with the name for the new 
 // component.
-class TemplateClass extends Component {
+class SubmitPage extends Component {
     state = {
         name: '',
         address: '',
@@ -37,32 +37,49 @@ class TemplateClass extends Component {
         }, () => {
             console.log(this.state)
         })
-        
+    }
+
+    handleClickSubmit = (event) => {
+       this.props.dispatch({type:'SEND_SUBMIT', payload: this.state});
+
     }
 
 
     render() {
         return (
-            <div>
+            <div className="submit-view">
                 <h2>Submit a suggestion for Chews</h2>
                 <input
                     type="text"
                     placeholder="Name"
                     onChange={(event) => this.handleChangeInputText(event, 'name')}>
                 </input>
+                <br></br>
                 <input
                     type="text"
                     placeholder="Address"
                     onChange={(event) => this.handleChangeInputText(event, 'address')}>
                 </input>
-                <input
+                <br></br>
+                <textarea
                     type="text"
                     placeholder="Description"
-                    onChange={(event) => this.handleChangeInputText(event, 'description')}>
-                </input>
+                    onChange={(event) => this.handleChangeInputText(event, 'description')}/>
+                <br></br>
 
-                <input type="checkbox" name="keto" value="true"
-                onChange={(event) => this.handleCheckbox(event, 'keto')} />
+                <input type="checkbox" name="keto" value="true" id="keto"
+                    onChange={(event) => this.handleCheckbox(event, 'keto')}/>
+                <label for="keto">Keto</label>
+
+                <input type="checkbox" name="gluten_free" value="true" id="gluten_free"
+                    onChange={(event) => this.handleCheckbox(event, 'gluten_free')}/>
+                <label for="gluten_free">Gluten-free</label>
+
+                <input type="checkbox" name="vegan" value="true" id="vegan"
+                    onChange={(event) => this.handleCheckbox(event, 'vegan')} />
+                <label for="vegan">Vegan</label>
+                <br></br>
+                <button onClick={this.handleClickSubmit} type="submit">Submit</button>
                 
                 
             </div>
@@ -70,4 +87,4 @@ class TemplateClass extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(TemplateClass);
+export default connect(mapStoreToProps)(SubmitPage);

@@ -16,6 +16,6 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    restaurantsSaga()
+    restaurantsSaga(),
   ]);
 }
