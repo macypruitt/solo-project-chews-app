@@ -11,11 +11,18 @@ const googleMapsClient = require('@google/maps').createClient({
 
 router.post('/', (req, res) => {
     console.log(req.body)
+    let dataObject=req.body
     googleMapsClient.geocode({address: req.body.address})
     .asPromise()
     .then((response) => {
-        console.log(response.json.results);
         res.send(response.json.results);
+        
+        const coordinates=response.json.results[0].geometry.location
+
+        dataObject.lat=coordinates.lat;
+        dataObject.lng=coordinates.lng;
+        dataObject.address=response.json.results[0].formatted_address;
+        console.log(dataObject)
     })
     .catch((err) => {
         console.log(err);
