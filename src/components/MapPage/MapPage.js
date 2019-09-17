@@ -7,6 +7,8 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 export class MapPage extends Component {
   state={}
+
+  
   render() {
     return (
       <Map google={this.props.google} zoom={14}

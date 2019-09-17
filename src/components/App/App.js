@@ -22,13 +22,17 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import MapPage from '../MapPage/MapPage'
 
 import './App.css';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class App extends Component {
   componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+    this.props.dispatch({type: 'FETCH_USER'});
+    this.props.dispatch({type: 'GET_PINS'})
+    
   }
 
   render() {
+    console.log('dsfjksd',this.props)
     return (
       <Router>
         <div>
@@ -52,6 +56,7 @@ class App extends Component {
               exact
               path="/map"
               component={MapPage}
+              
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -93,4 +98,4 @@ class App extends Component {
   )}
 }
 
-export default connect()(App);
+export default connect(mapStoreToProps)(App);

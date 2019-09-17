@@ -61,5 +61,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# Build directories for Front-End Assets
+src/build/
+
 # ignore package-lock as it complicates merging
 package-lock.json
