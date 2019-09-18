@@ -30,7 +30,8 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'});
-    this.props.dispatch({type: 'GET_PINS'})
+    this.props.dispatch({type: 'GET_PINS'});
+    this.props.dispatch({type: 'GET_ADMIN'});
     
   }
 

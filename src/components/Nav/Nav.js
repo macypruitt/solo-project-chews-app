@@ -23,6 +23,12 @@ const Nav = (props) => (
         and call this link 'Login / Register' if they are not */}
         Map
       </Link>
+      <Link className="nav-link" to="/admin">
+        {/* Show this link if they are logged in or not,
+        but call this link 'Home' if they are logged in,
+        and call this link 'Login / Register' if they are not */}
+        Admin
+      </Link>
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,

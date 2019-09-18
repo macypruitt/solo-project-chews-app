@@ -3,10 +3,9 @@ const adminReducer = (state = [], action) => {
       case 'SET_ADMIN':
         return action.payload;
       default:
-        return action;
+        return state;
     }
   };
   
- 
   export default adminReducer;
   

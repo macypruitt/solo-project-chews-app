@@ -3,7 +3,7 @@ const restaurantsReducer = (state = [], action) => {
       case 'SET_PINS':
         return action.payload;
       default:
-        return action;
+        return state;
     }
   };
   
