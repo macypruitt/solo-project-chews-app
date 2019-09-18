@@ -8,6 +8,9 @@ body {
     margin: 50px;
 }
 
+.admin-container {
+    text-align: center;
+}
 form {
     background-color: #dbd5d5;
     width: 30%;

@@ -21,9 +21,11 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import MapPage from '../MapPage/MapPage';
 import SuggestPage from '../SuggestPage/SuggestPage';
+import AdminListPage from '../AdminListPage/AdminListPage';
 
 import './App.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+
 
 class App extends Component {
   componentDidMount () {
@@ -57,7 +59,11 @@ class App extends Component {
               exact
               path="/map"
               component={MapPage}
-              
+            />
+            <Route
+              exact
+              path="/admin"
+              component={AdminListPage}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.

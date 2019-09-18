@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 ////GET LIST OF APPROVED RESTAURANTS
-router.get('/', (req, res) => {
+router.get('/approved', (req, res) => {
     const queryText = `SELECT * FROM "restaurants" 
                         WHERE "approved"='true';`
 
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 ////GET LIST OF ALL RESTAURANTS (PENDING AND APPROVED)
-router.get('/aa', (req, res) => {
+router.get('/all', (req, res) => {
     const queryText = `SELECT * FROM "restaurants";`
 
     pool.query(queryText)
