@@ -18,6 +18,20 @@ router.get('/', (req, res) => {
         });
 });
 
+////GET LIST OF ALL RESTAURANTS (PENDING AND APPROVED)
+router.get('/aa', (req, res) => {
+    const queryText = `SELECT * FROM "restaurants";`
+
+    pool.query(queryText)
+        .then((response) => {
+            res.send(response.rows); 
+        })
+        .catch((err) => {
+            console.log('error SELECTING restaurants', err);
+            res.sendStatus(500);
+        });
+});
+
 
 /**
  * POST route template
