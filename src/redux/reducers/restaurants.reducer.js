@@ -7,6 +7,5 @@ const restaurantsReducer = (state = [], action) => {
     }
   };
   
- 
   export default restaurantsReducer;
   

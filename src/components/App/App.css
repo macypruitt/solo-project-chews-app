@@ -11,6 +11,11 @@ body {
 .admin-container {
     text-align: center;
 }
+
+.admin-table {
+    width: 90%;
+    border: 1px solid;
+}
 form {
     background-color: #dbd5d5;
     width: 30%;
