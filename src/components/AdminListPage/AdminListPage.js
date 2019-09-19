@@ -11,13 +11,8 @@ class AdminListPage extends Component {
         this.props.dispatch({type: 'GET_ADMIN'})
     }
    
-    
-
-
 
     render() {
-    
-       console.log('help me, myron', this.props.store.adminReducer)
            let adminList = this.props.store.adminReducer.map((item, index) => {
                return <tr key={index}>
                         <td>{item.name}</td>

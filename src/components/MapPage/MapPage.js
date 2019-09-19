@@ -8,13 +8,25 @@ dotenv.config();
  
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
  
+let coords = [
+  {lat:39.0932,
+  lng:-94.574,
+  text: "whatup"},
+  {lat:39.097,
+    lng:-94.56,
+  text: "hi"},
+  {lat:39.0984,
+    lng:-94.579,
+  text: "hey"}
+]
+
 class SimpleMap extends Component {
 
 
   static defaultProps = {
     center: {
-      lat: 39.09,
-      lng: -94.58
+      lat: 39.07,
+      lng: -94.59
     },
     zoom: 12
   };

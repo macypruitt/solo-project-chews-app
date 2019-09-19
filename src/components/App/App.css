@@ -15,7 +15,11 @@ body {
 .admin-table {
     width: 90%;
     border: 1px solid;
+    margin: auto;
 }
+
+
+
 form {
     background-color: #dbd5d5;
     width: 30%;
