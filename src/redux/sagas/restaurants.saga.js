@@ -35,7 +35,7 @@ function* getApprovedList(){
 
   function* getEditItem(action){
     try{
-      const response = yield axios.get('api/restaurants/single/${action.payload}');
+      const response = yield axios.get(`api/restaurants/single/${action.payload}`);
       yield put({type: 'SET_EDIT', payload: response.data});
     }
     catch(err){
@@ -43,17 +43,6 @@ function* getApprovedList(){
     }
   }
 
-  // function* postToDatabase(action){
-  //   try{
-  //     const response = yield axios.post('/api/maps', action.payload);
-      
-  //     //console.log('saga', action.payload)
-  //     console.log('chhhhh', response.data);
-  //   }
-  //   catch(err) {
-  //     console.log('ERROR in post', err)
-  //   }
-  // }
 
 
 

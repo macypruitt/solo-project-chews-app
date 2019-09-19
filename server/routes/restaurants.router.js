@@ -33,7 +33,7 @@ router.get('/all', (req, res) => {
 });
 
 ////GET SINGLE RESTAURANT THAT MATCHES ID
-router.get('/single:id', (req, res) => {
+router.get('/single/:id', (req, res) => {
     const queryText = `SELECT * FROM "restaurants"
                         WHERE "restaurants".id=$1;`
     const restaurantId = req.params.id;
