@@ -18,9 +18,16 @@ body {
     margin: auto;
 }
 
+.content-container{
+    text-align: center;
+
+}
 .edit-box{
     border: 1px solid black;
     text-align: center;
+    width: 80%;
+    display: inline-block;
+    margin: 3px;
 }
 
 form {
