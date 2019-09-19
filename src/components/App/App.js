@@ -1,3 +1,4 @@
+////import modules
 import React, {Component} from 'react';
 import {
   HashRouter as Router,
@@ -8,6 +9,7 @@ import {
 
 import {connect} from 'react-redux';
 
+////import components
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
@@ -30,21 +32,16 @@ class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'});
     this.props.dispatch({type: 'GET_PINS'});
-    this.props.dispatch({type: 'GET_ADMIN'});
     
   }
 
   render() {
-    console.log('dsfjksd',this.props)
     return (
       <Router>
         <div>
           <Nav />
           <Switch>
-            {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/map" />
-            {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
             <Route
               exact
               path="/suggest"
@@ -60,11 +57,11 @@ class App extends Component {
               path="/map"
               component={MapPage}
             />
-            <Route
+            {/* <Route
               exact
               path="/admin"
               component={AdminListPage}
-            />
+            /> */}
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -72,7 +69,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/admin"
-              component={UserPage}
+              component={AdminListPage}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
