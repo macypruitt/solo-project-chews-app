@@ -9,7 +9,6 @@ class AdminListPage extends Component {
 
     componentDidMount(){
         this.props.dispatch({type: 'GET_ADMIN'})
-        this.props.dispatch({type: 'GET_EDIT', payload:2})
     }
 
     clickEdit = (event, id) => {
@@ -32,8 +31,6 @@ class AdminListPage extends Component {
 
                 <h2>Admin list page</h2>
 
-                {this.props.store.editReducer.name}
-                
                 <table className="admin-table">
                     <tr>
                         <th>Name</th>

@@ -18,6 +18,11 @@ body {
     margin: auto;
 }
 
+.edit-box{
+    border: 1px solid black;
+    text-align: center;
+}
+
 form {
     background-color: #dbd5d5;
     width: 30%;
