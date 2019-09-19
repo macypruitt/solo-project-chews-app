@@ -23,6 +23,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import MapPage from '../MapPage/MapPage';
 import SuggestPage from '../SuggestPage/SuggestPage';
 import AdminListPage from '../AdminListPage/AdminListPage';
+import AdminEditPage from '../AdminEditPage/AdminEditPage';
 
 import './App.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
@@ -70,6 +71,10 @@ class App extends Component {
               exact
               path="/admin"
               component={AdminListPage}
+            />
+            <ProtectedRoute
+              path="/edit/:id"
+              component={AdminEditPage}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}

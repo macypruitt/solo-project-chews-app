@@ -32,6 +32,25 @@ router.get('/all', (req, res) => {
         });
 });
 
+////GET SINGLE RESTAURANT THAT MATCHES ID
+router.get('/single:id', (req, res) => {
+    const queryText = `SELECT * FROM "restaurants"
+                        WHERE "restaurants".id=$1;`
+    const restaurantId = req.params.id;
+    console.log(restaurantId);
+
+    pool.query(queryText, [restaurantId])
+        .then((response) => {
+            res.send(response.rows); 
+        })
+        .catch((err) => {
+            console.log('error SELECTING single restaurant', err);
+            res.sendStatus(500);
+        });
+});
+
+
+
 
 /**
  * POST route template

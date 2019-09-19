@@ -33,6 +33,16 @@ function* getApprovedList(){
     }
   }
 
+  function* getEditItem(action){
+    try{
+      const response = yield axios.get('api/restaurants/single/${action.payload}');
+      yield put({type: 'SET_EDIT', payload: response.data});
+    }
+    catch(err){
+      console.log('Error retrieving single item to edit', err);
+    }
+  }
+
   // function* postToDatabase(action){
   //   try{
   //     const response = yield axios.post('/api/maps', action.payload);
@@ -51,6 +61,7 @@ function* restaurantsSaga() {
     yield takeLatest('GET_PINS', getApprovedList);
     yield takeLatest('SEND_SUBMIT', postNewSubmission);
     yield takeLatest('GET_ADMIN', getAdminList);
+    yield takeLatest('GET_EDIT', getEditItem);
     //yield takeLatest('POST_DB', postToDatabase);
   }
   

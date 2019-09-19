@@ -7,7 +7,13 @@ class AdminEditPage extends Component {
         
     };
 
+    componentDidMount(){
+        console.log('hiii', this.props.match.params.id);
+        this.props.dispatch({type: 'GET_EDIT', payload:this.props.match.params.id})
+    }
+
     render() {
+        console.log('id returns:', this.props.store.editReducer)
         return (
             <div>
                 <h2>Edit Listing</h2>
