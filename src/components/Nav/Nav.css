@@ -2,19 +2,19 @@
     font-size: 24px;
     font-weight: 700;
     display: inline-block;
-    color: #f2f2f2;
+    color: ##000000;
     padding-left: 10px;
 }
 
 .nav {
   overflow: hidden;
-  background-color: #00acb0;
+  background-color: #FFE9AA;
 }
 
 .nav-link {
   float: left;
-  color: #f2f2f2;
-  background-color: #00acb0;
+  color: ##000000;
+  background-color: ##FFE9AA;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -28,9 +28,15 @@
 }
 
 .nav-link:hover {
-  background-color: #008183;
+  background-color: #FFE28C;
 }
 
 .nav-right {
   float: right;
+}
+
+.nav-logo {
+  height: 50px;
+  align-self: center;
+  padding: 10px;
 }

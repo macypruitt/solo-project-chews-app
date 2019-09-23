@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import logo from '../Nav/logo.png'
 
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">Chews</h2>
+      <img src={logo} className="nav-logo" alt="Chews"></img>
     </Link>
     <div className="nav-right">
     <Link className="nav-link" to="/suggest">
