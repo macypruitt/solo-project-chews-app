@@ -37,7 +37,6 @@ router.get('/single/:id', (req, res) => {
     const queryText = `SELECT * FROM "restaurants"
                         WHERE "restaurants".id=$1;`
     const restaurantId = req.params.id;
-    console.log(restaurantId);
 
     pool.query(queryText, [restaurantId])
         .then((response) => {
@@ -49,12 +48,7 @@ router.get('/single/:id', (req, res) => {
         });
 });
 
-
-
-
-/**
- * POST route template
- */
+////POST new suggestion to database
 router.post('/', (req, res) => {
     console.log(req.body);
     let dataObject=req.body;

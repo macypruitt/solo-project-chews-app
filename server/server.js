@@ -30,7 +30,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/restaurants', restaurantsRouter);
 app.use('/api/maps', mapsRouter);
-app.use('api/admin', adminRouter);
+app.use('/api/admin', adminRouter);
 
 // Serve static files
 app.use(express.static('build'));

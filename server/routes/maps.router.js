@@ -8,7 +8,7 @@ const googleMapsClient = require('@google/maps').createClient({
     key: process.env.GOOGLE_MAPS,
     Promise: Promise
 })
-
+////Sends object to Google Maps API, gets lattitude, longitude, and full address, then submits to database
 router.post('/', (req, res) => {
     console.log(req.body);
     let dataObject=req.body;

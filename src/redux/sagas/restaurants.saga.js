@@ -43,6 +43,15 @@ function* getApprovedList(){
     }
   }
 
+  function* updateEditItem(action){
+    try{
+      yield axios.put(`/api/admin/edit`, action.payload);
+    }
+    catch(err){
+      console.log('Error editing listing', err);
+    }
+  }
+
 
 
 
@@ -51,6 +60,7 @@ function* restaurantsSaga() {
     yield takeLatest('SEND_SUBMIT', postNewSubmission);
     yield takeLatest('GET_ADMIN', getAdminList);
     yield takeLatest('GET_EDIT', getEditItem);
+    yield takeLatest('PUT_EDIT', updateEditItem);
     //yield takeLatest('POST_DB', postToDatabase);
   }
   

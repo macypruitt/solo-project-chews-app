@@ -2,11 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-class AdminEditPage extends Component {
-    
+
+class EditPage extends Component {
+    state = {
+        name:'',
+        address: '',
+        phone: '',
+        description: '',
+        website: '',
+        lat:'',
+        lng: '',
+        keto:'',
+        gluten_free:'',
+        vegan: '',
+        approved: ''
+    };
 
     componentDidMount(){
         this.props.dispatch({type: 'GET_EDIT', payload:this.props.match.params.id});
+        
     }
 
     handleChangeInputText(event, dataKey) {
@@ -18,45 +32,6 @@ class AdminEditPage extends Component {
         console.log(this.state);
     }
 
-    // consolidateEdit(){
-    //     let dataObject = this.props.store.editReducer[0;
-
-    //     if(this.state.name){
-    //         dataObject.name = this.state.name;
-    //     }
-    //     if(this.state.address){
-    //         dataObject.address = this.state.address;
-    //     }
-    //     if(this.state.phone){
-    //         dataObject.phone = this.state.phone;
-    //     }
-    //     if(this.state.description){
-    //         dataObject.description = this.state.description;
-    //     }
-    //     if(this.state.website){
-    //         dataObject.website = this.state.website;
-    //     }
-    //     if(this.state.lat){
-    //         dataObject.lat = this.state.lat;
-    //     }
-    //     if(this.state.lng){
-    //         dataObject.lng = this.state.lng;
-    //     }
-    //     if(this.state.keto){
-    //         dataObject.keto = this.state.keto;
-    //     }
-    //     if(this.state.gluten_free){
-    //         dataObject.gluten_free = this.state.gluten_free;
-    //     }
-    //     if(this.state.approved){
-    //         dataObject.approved = this.state.approved;
-        
-    //     console.log(dataObject);
-        
-    //     return dataObject;
-    //     };
-    // }
-
     handleCheckbox(event,dataKey) {
         this.setState({
             ...this.state,
@@ -67,32 +42,102 @@ class AdminEditPage extends Component {
     }
 
     handleClickSubmit = (event) => {
-        //const objectToPut = this.consolidateEdit();
-        //this.props.dispatch({type:'PUT_EDIT', payload: objectToPut});
-        //console.log(objectToPut)
-        //this.props.history.push('/admin')
+        const dispatchObject = this.consolidateEdit();
+        // console.log('current state', this.state)
+        // console.log('reducer', this.props.store.editReducer[0])
+        this.props.dispatch({type:'PUT_EDIT', payload: dispatchObject});
+ 
      }
 
-    render() {
+    
+    consolidateEdit(){
+        // let submitThisObject ={
+        //     name:'',
+        //     address: '',
+        //     phone: '',
+        //     description: '',
+        //     website: '',
+        //     lat:'',
+        //     lng: '',
+        //     keto:'',
+        //     gluten_free:'',
+        //     vegan: '',
+        //     approved: ''
+        // }
 
-       
+        let submitThisObject = this.props.store.editReducer[0];
+        console.log('item to submit pre edit', submitThisObject);
+        if(this.state.name !=''){
+            submitThisObject.name = this.state.name;
+        }
+        if(this.state.address !=''){
+            submitThisObject.address = this.state.address;
+        }
+        if(this.state.phone !=''){
+            submitThisObject.phone = this.state.phone;
+        }
+        if(this.state.description !=''){
+            submitThisObject.description = this.state.description;
+        }
+        if(this.state.website !=''){
+            submitThisObject.website = this.state.website;
+        }
+        if(this.state.lat !=''){
+            submitThisObject.lat = this.state.lat;
+        }
+        if(this.state.lng !=''){
+            submitThisObject.lng = this.state.lng;
+        }
+        if(this.state.keto !=''){
+            submitThisObject.keto = this.state.keto;
+        }
+        if(this.state.gluten_free !=''){
+            submitThisObject.gluten_free = this.state.gluten_free;
+        }
+        if(this.state.approved !=''){
+            submitThisObject.approved = this.state.approved;
+        };
+        console.log('item to submit post edit', submitThisObject);
+        return submitThisObject;
+    }
+
+    
+
+    render() {
+        
+        let listingFromDatabase = {
+            name:'',
+            address: '',
+            phone: '',
+            description: '',
+            website: '',
+            lat:'',
+            lng: '',
+            keto:'',
+            gluten_free:'',
+            vegan: '',
+        }
+
+        if(this.props.store.editReducer[0] != null){
+            listingFromDatabase = this.props.store.editReducer[0];
+            //document.getElementById('js-name-input').value = this.props.store.editReducer[0].name;
+        };
 
         
 
         return (
-            <div className="content-container">
-                {/* <h2>Edit Listing</h2>
-
+            <div className="edit-box">
                 <div className="edit-box">
-                    <p>Name: {this.props.store.editReducer[0].name}</p>
+                    <p>Name: {listingFromDatabase.name}</p>
                     <input type="text"
                         onChange={(event) => this.handleChangeInputText(event, 'name')}
-                        placeholder="New name">
+                        placeholder="New name"
+                        id="js-name-input">
                     </input>
                 </div>
 
                 <div className="edit-box">
-                    <p>Address: {this.props.store.editReducer[0].address}</p>
+                    <p>Address: {listingFromDatabase.address}</p>
                     <input type="text"
                         onChange={(event) => this.handleChangeInputText(event, 'address')}
                         placeholder="New address">
@@ -100,7 +145,7 @@ class AdminEditPage extends Component {
                 </div>
                 
                 <div className="edit-box">
-                    <p>Phone: {this.props.store.editReducer[0].phone}</p>
+                    <p>Phone: {listingFromDatabase.phone}</p>
                     <input type="text"
                         onChange={(event) => this.handleChangeInputText(event, 'phone')}
                         placeholder="New address">
@@ -108,7 +153,7 @@ class AdminEditPage extends Component {
                 </div>
                 
                 <div className="edit-box">
-                    <p>Description: {this.props.store.editReducer[0].description}</p>
+                    <p>Description: {listingFromDatabase.description}</p>
                     <input type="text"
                         onChange={(event) => this.handleChangeInputText(event, 'description')}
                         placeholder="New description">
@@ -116,7 +161,7 @@ class AdminEditPage extends Component {
                 </div>
                 
                 <div className="edit-box">
-                    <p>Website:  {this.props.store.editReducer[0].website}</p>
+                    <p>Website:  {listingFromDatabase.website}</p>
                     <input type="text"
                         onChange={(event) => this.handleChangeInputText(event, 'website')}
                         placeholder="New website">
@@ -124,7 +169,7 @@ class AdminEditPage extends Component {
                 </div>
 
                 <div className="edit-box">
-                    <p>Lattitude: {this.props.store.editReducer[0].lat}</p>
+                    <p>Lattitude: {listingFromDatabase.lat}</p>
                     <input type="text"
                         onChange={(event) => this.handleChangeInputText(event, 'lat')}
                         placeholder="New lattitude">
@@ -132,7 +177,7 @@ class AdminEditPage extends Component {
                 </div>
                 
                 <div className="edit-box">
-                    <p>Longitude: {this.props.store.editReducer[0].lng}</p>
+                    <p>Longitude: {listingFromDatabase.lng}</p>
                     <input type="text"
                         onChange={(event) => this.handleChangeInputText(event, 'lng')}
                         placeholder="New longitude">
@@ -156,10 +201,9 @@ class AdminEditPage extends Component {
                     onChange={(event) => this.handleCheckbox(event, 'approved')} />
                 <label for="approved">Approved</label>
                 <button onClick={this.handleClickSubmit} type="submit">Save</button>
-                 */}
             </div>
         );
     }
 }
 
-export default connect(mapStoreToProps)(AdminEditPage);
+export default connect(mapStoreToProps)(EditPage);

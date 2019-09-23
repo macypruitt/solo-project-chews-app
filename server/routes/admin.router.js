@@ -4,7 +4,6 @@ const router = express.Router();
 
 
 router.put('/edit', (req, res) => {
-    router.put('/', (req, res) => {
         const dataObject = req.body;
         const restaurantId = req.body.id;
         console.log(`req.body contains:`, req.body)
@@ -22,10 +21,9 @@ router.put('/edit', (req, res) => {
                             dataObject.vegan,
                             dataObject.approved,
                             dataObject.lat,
-                            dataObject.lng])
-    
-        pool.query(queryText, [movieObject.title, movieObject.description, movieId])
-            .then((result) => {
+                            dataObject.lng,
+                            dataObject.id])
+            .then((response) => {
                 res.sendStatus(200);
             })
             .catch((err) => {
@@ -33,7 +31,6 @@ router.put('/edit', (req, res) => {
                 res.sendStatus(500);
             });
     }); 
-});
 
 /**
  * POST route template

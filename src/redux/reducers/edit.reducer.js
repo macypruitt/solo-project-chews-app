@@ -3,7 +3,7 @@ const editReducer = (state = {}, action) => {
       case 'SET_EDIT':
         return action.payload;
       default:
-        return 'state';
+        return state;
     }
   };
   

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import AdminListItem from '../AdminListItem/AdminListItem';
 
 
 
@@ -11,19 +12,15 @@ class AdminListPage extends Component {
         this.props.dispatch({type: 'GET_ADMIN'})
     }
 
-    clickEdit = (event, id) => {
-        this.props.history.push(`/edit/${id}`)
-    }
+    // clickEdit = (event, id) => {
+    //     this.props.history.push(`/edit/${id}`)
+    // }
    
 
     render() {
            let adminList = this.props.store.adminReducer.map((item, index) => {
-               return <tr key={index}>
-                        <td>{item.name}</td>
-                        <td>Submitted date</td>
-                        <td onClick={(event) => this.clickEdit(event, item.id)}>Edit</td>
-                        
-                        </tr>
+               return  <AdminListItem listing={item} key={index} />
+                      
        })
 
         return (
