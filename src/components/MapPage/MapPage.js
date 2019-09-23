@@ -32,21 +32,39 @@ class SimpleMap extends Component {
   };
  
   render() {
-    console.log('dang env', process.env);
+    console.log('loggie', this.props.store.restaurantsReducer);
+
+    let restaurantsArray = this.props.store.restaurantsReducer.map((item, index) => {
+        return (
+            <div key={index} className="test"
+            lat={item.lat}
+            lng={item.lng}
+            //onClick={this.clickMarker('arrrrg')}
+            >
+                {item.name}
+            </div>
+        )
+        
+    })
+
+    console.log('rest array', restaurantsArray)
+
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '92vh', width: '100%' }}>
         
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
+
+          {restaurantsArray}
+          {/* <AnyReactComponent
+            lat={39.07}
+            lng={-94.59}
             text="My Marker"
-          />
+          /> */}
         </GoogleMapReact>
       </div>
     );
