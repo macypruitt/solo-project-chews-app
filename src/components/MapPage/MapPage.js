@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import GoogleMapReact from 'google-map-react';
 import dotenv from 'dotenv';
-import './MapPage.css'
-
+import './MapPage.css';
+import Marker from './Marker';
 
 dotenv.config();
  
@@ -28,13 +28,13 @@ class SimpleMap extends Component {
 
     let restaurantsArray = this.props.store.restaurantsReducer.map((item, index) => {
         return (
-            <div key={index} className="test"
+            <Marker key={index} className="test"
             lat={item.lat}
             lng={item.lng}
             //onClick={this.clickMarker('arrrrg')}
             >
                 {item.name}
-            </div>
+            </Marker>
         )
         
     })
@@ -187,6 +187,12 @@ class SimpleMap extends Component {
         >
 
           {restaurantsArray}
+          <Marker
+            lat={39.07}
+            lng={-94.59}
+            text="checkssssssssssss"
+            />
+            
           {/* <AnyReactComponent
             lat={39.07}
             lng={-94.59}
