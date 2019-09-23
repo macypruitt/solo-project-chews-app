@@ -46,8 +46,13 @@ class EditPage extends Component {
         // console.log('current state', this.state)
         // console.log('reducer', this.props.store.editReducer[0])
         this.props.dispatch({type:'PUT_EDIT', payload: dispatchObject});
- 
+        this.props.history.push('/admin')
      }
+
+    deleteListing = (event) => {
+        this.props.dispatch({type:'DELETE_LISTING', payload: this.props.match.params.id});
+        this.props.history.push('/admin');
+    }
 
     
     consolidateEdit(){
@@ -67,34 +72,34 @@ class EditPage extends Component {
 
         let submitThisObject = this.props.store.editReducer[0];
         console.log('item to submit pre edit', submitThisObject);
-        if(this.state.name !=''){
+        if(this.state.name !==''){
             submitThisObject.name = this.state.name;
         }
-        if(this.state.address !=''){
+        if(this.state.address !==''){
             submitThisObject.address = this.state.address;
         }
-        if(this.state.phone !=''){
+        if(this.state.phone !==''){
             submitThisObject.phone = this.state.phone;
         }
-        if(this.state.description !=''){
+        if(this.state.description !==''){
             submitThisObject.description = this.state.description;
         }
-        if(this.state.website !=''){
+        if(this.state.website !==''){
             submitThisObject.website = this.state.website;
         }
-        if(this.state.lat !=''){
+        if(this.state.lat !==''){
             submitThisObject.lat = this.state.lat;
         }
-        if(this.state.lng !=''){
+        if(this.state.lng !==''){
             submitThisObject.lng = this.state.lng;
         }
-        if(this.state.keto !=''){
+        if(this.state.keto !==''){
             submitThisObject.keto = this.state.keto;
         }
-        if(this.state.gluten_free !=''){
+        if(this.state.gluten_free !==''){
             submitThisObject.gluten_free = this.state.gluten_free;
         }
-        if(this.state.approved !=''){
+        if(this.state.approved !==''){
             submitThisObject.approved = this.state.approved;
         };
         console.log('item to submit post edit', submitThisObject);
@@ -201,6 +206,7 @@ class EditPage extends Component {
                     onChange={(event) => this.handleCheckbox(event, 'approved')} />
                 <label for="approved">Approved</label>
                 <button onClick={this.handleClickSubmit} type="submit">Save</button>
+                <button onClick={this.deleteListing}>Delete</button>
             </div>
         );
     }

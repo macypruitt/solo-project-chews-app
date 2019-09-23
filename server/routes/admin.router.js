@@ -32,6 +32,21 @@ router.put('/edit', (req, res) => {
             });
     }); 
 
+router.delete('/delete/:id', (req, res) => {
+    const queryText = `DELETE FROM "restaurants"
+                        WHERE "restaurants".id=$1;`
+    const restaurantId = req.params.id;
+
+    pool.query(queryText, [restaurantId])
+        .then((response) => {
+            res.send(response.rows); 
+        })
+        .catch((err) => {
+            console.log('error deleting restaurant', err);
+            res.sendStatus(500);
+        });
+});
+
 /**
  * POST route template
  */

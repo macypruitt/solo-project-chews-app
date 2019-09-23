@@ -11,8 +11,6 @@ class AdminListItem extends Component {
 
     render() {
 
-        console.log('this is listingddddd', this.props.listing)
-
         return (
                 <tr>
                     <td>{this.props.listing.name}</td>

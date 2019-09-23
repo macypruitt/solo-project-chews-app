@@ -52,6 +52,15 @@ function* getApprovedList(){
     }
   }
 
+  function* deleteListing(action){
+    try{
+      const response = yield axios.delete(`api/admin/delete/${action.payload}`);
+    }
+    catch(err){
+      console.log('Error retrieving single item to edit', err);
+    }
+  }
+
 
 
 
@@ -61,6 +70,7 @@ function* restaurantsSaga() {
     yield takeLatest('GET_ADMIN', getAdminList);
     yield takeLatest('GET_EDIT', getEditItem);
     yield takeLatest('PUT_EDIT', updateEditItem);
+    yield takeLatest('DELETE_LISTING', deleteListing)
     //yield takeLatest('POST_DB', postToDatabase);
   }
   
