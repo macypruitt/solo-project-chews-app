@@ -43,8 +43,6 @@ class EditPage extends Component {
 
     handleClickSubmit = (event) => {
         const dispatchObject = this.consolidateEdit();
-        // console.log('current state', this.state)
-        // console.log('reducer', this.props.store.editReducer[0])
         this.props.dispatch({type:'PUT_EDIT', payload: dispatchObject});
         this.props.history.push('/admin')
      }
@@ -54,22 +52,8 @@ class EditPage extends Component {
         this.props.history.push('/admin');
     }
 
-    
     consolidateEdit(){
-        // let submitThisObject ={
-        //     name:'',
-        //     address: '',
-        //     phone: '',
-        //     description: '',
-        //     website: '',
-        //     lat:'',
-        //     lng: '',
-        //     keto:'',
-        //     gluten_free:'',
-        //     vegan: '',
-        //     approved: ''
-        // }
-
+       
         let submitThisObject = this.props.store.editReducer[0];
         console.log('item to submit pre edit', submitThisObject);
         if(this.state.name !==''){
@@ -106,8 +90,6 @@ class EditPage extends Component {
         return submitThisObject;
     }
 
-    
-
     render() {
         
         let listingFromDatabase = {
@@ -125,10 +107,7 @@ class EditPage extends Component {
 
         if(this.props.store.editReducer[0] != null){
             listingFromDatabase = this.props.store.editReducer[0];
-            //document.getElementById('js-name-input').value = this.props.store.editReducer[0].name;
         };
-
-        
 
         return (
             <div className="edit-box">

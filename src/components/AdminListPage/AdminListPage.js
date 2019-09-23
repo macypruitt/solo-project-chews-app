@@ -12,11 +12,6 @@ class AdminListPage extends Component {
         this.props.dispatch({type: 'GET_ADMIN'})
     }
 
-    // clickEdit = (event, id) => {
-    //     this.props.history.push(`/edit/${id}`)
-    // }
-   
-
     render() {
            let adminList = this.props.store.adminReducer.map((item, index) => {
                return  <AdminListItem listing={item} key={index} />
