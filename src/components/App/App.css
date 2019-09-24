@@ -112,8 +112,22 @@ textarea {
     margin-top: 5%;
     margin-bottom: 10%;
     margin-right: 5%;
+    text-align: center;
+    
 }
+
+
+
+
 
 .btn-exit-modal{
     float: right;
+}
+
+.diet-buttons {
+    position: absolute;
+    top: 70px;
+    left: 16px;
+    z-index: 6;
+    line-height: 10px;
 }

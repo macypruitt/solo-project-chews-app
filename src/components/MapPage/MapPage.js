@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import './MapPage.css';
 import Marker from './Marker';
 import Modal from './Modal';
+import DietButtons from './DietButtons';
 
 dotenv.config();
  
@@ -32,7 +33,6 @@ class SimpleMap extends Component {
     this.setState(prevState => ({
         modalIsShowing: !prevState.modalIsShowing,
     }), () =>{
-
         if(this.state.modalIsShowing == true)
         this.props.dispatch({type:'MODAL_INFO', payload: data})
         }
@@ -65,6 +65,8 @@ class SimpleMap extends Component {
       // Important! Always set the container height explicitly
       <div className="map-div">
       <div  style={{ height: '92vh', width: '100%' }}>
+          <DietButtons height={'8px'} letter={'k k'}/>
+          
         {detailsPane}
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}

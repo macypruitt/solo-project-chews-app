@@ -15,6 +15,8 @@ class TemplateClass extends Component {
     
 
     render() {
+        
+        
         return (
             <div>
                 <div className="modal">
@@ -22,7 +24,14 @@ class TemplateClass extends Component {
                 <button className="btn-exit-modal" onClick={this.props.modalToggle}>X</button>
 
                 <div className="modal-content">
-                    {this.props.store.modalReducer.name}
+                    <h3>{this.props.store.modalReducer.name}</h3>
+                    {this.props.store.modalReducer.address}
+                    {this.props.store.modalReducer.phone}
+                    
+                    <p>{this.props.store.modalReducer.description}</p>
+                    <br></br>
+                    
+                    <a href='{this.props.store.modalReducer.website}'>website</a>
 
 
                 </div>
