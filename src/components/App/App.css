@@ -103,9 +103,13 @@ textarea {
 .modal{
     width: 90%;
     height: 90%;
-    background-color: white;
+    background-color: rgb(255,255,255,0.8);
+    border: 1px solid white;
+    box-shadow: 4px 4px 7px rgba(0,0,0,0.2) ;
     position: absolute;
     z-index: 6;
     margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 10%;
     margin-right: 5%;
 }

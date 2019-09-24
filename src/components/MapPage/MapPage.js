@@ -5,6 +5,7 @@ import GoogleMapReact from 'google-map-react';
 import dotenv from 'dotenv';
 import './MapPage.css';
 import Marker from './Marker';
+import Modal from './Modal';
 
 dotenv.config();
  
@@ -14,13 +15,23 @@ const styles = require('./GoogleMapStyles.json');
 
 class SimpleMap extends Component {
 
-  static defaultProps = {
+    state={
+        modalIsShowing: false
+    }
+
+    static defaultProps = {
     center: {
       lat: 39.07,
       lng: -94.59
     },
     zoom: 12
   };
+
+  handleModal = (event, data) => {
+    this.setState(prevState => ({
+        modalIsShowing: !prevState.modalIsShowing
+    }));
+  }
 
 
   render() {
@@ -31,15 +42,21 @@ class SimpleMap extends Component {
             <Marker key={index} className="test"
             lat={item.lat}
             lng={item.lng}
-            //onClick={this.clickMarker('arrrrg')}
+            modalToggle={this.handleModal}
+            item={item}
             >
-                {item.name}
+                
             </Marker>
         ) 
     })
 
-    const detailsPane = <div className="modal">
-    </div>
+    
+    
+    let detailsPane = <div></div>
+
+    if(this.state.modalIsShowing){
+        detailsPane = <Modal modalToggle={this.handleModal}/>
+    }
 
     return (
       // Important! Always set the container height explicitly
