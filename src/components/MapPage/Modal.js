@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { isTemplateElement } from '@babel/types';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace 
@@ -18,9 +19,13 @@ class TemplateClass extends Component {
             <div>
                 <div className="modal">
 
+                <button className="btn-exit-modal" onClick={this.props.modalToggle}>X</button>
 
-                <button onClick={this.props.modalToggle}>close</button>
+                <div className="modal-content">
+                    {this.props.store.modalReducer.name}
 
+
+                </div>
 
                 </div>
                 

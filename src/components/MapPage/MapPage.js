@@ -16,26 +16,32 @@ const styles = require('./GoogleMapStyles.json');
 class SimpleMap extends Component {
 
     state={
-        modalIsShowing: false
+        modalIsShowing: false,
+        activeListing: ''
     }
 
     static defaultProps = {
-    center: {
-      lat: 39.07,
-      lng: -94.59
-    },
-    zoom: 12
+        center: {
+            lat: 39.07,
+            lng: -94.59
+        },
+        zoom: 12
   };
 
   handleModal = (event, data) => {
     this.setState(prevState => ({
-        modalIsShowing: !prevState.modalIsShowing
-    }));
+        modalIsShowing: !prevState.modalIsShowing,
+    }), () =>{
+
+        if(this.state.modalIsShowing == true)
+        this.props.dispatch({type:'MODAL_INFO', payload: data})
+        }
+    );
   }
 
 
   render() {
-    console.log('loggie', this.props.store.restaurantsReducer);
+    console.log(this.state);
 
     let restaurantsArray = this.props.store.restaurantsReducer.map((item, index) => {
         return (
@@ -44,18 +50,15 @@ class SimpleMap extends Component {
             lng={item.lng}
             modalToggle={this.handleModal}
             item={item}
-            >
-                
-            </Marker>
+            />
         ) 
     })
 
     
-    
     let detailsPane = <div></div>
 
     if(this.state.modalIsShowing){
-        detailsPane = <Modal modalToggle={this.handleModal}/>
+        detailsPane = <Modal id="modal" modalToggle={this.handleModal}></Modal>
     }
 
     return (
