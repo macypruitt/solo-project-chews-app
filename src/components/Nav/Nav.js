@@ -12,24 +12,20 @@ const Nav = (props) => (
       <img src={logo} className="nav-logo" alt="Chews"></img>
     </Link>
     <div className="nav-right">
-    <Link className="nav-link" to="/suggest">
-        {/* Show this link if they are logged in or not,
-        but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
-        Suggest Restaurant
-      </Link>
+    
       <Link className="nav-link" to="/map">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
         Map
       </Link>
-      <Link className="nav-link" to="/admin">
+      <Link className="nav-link" to="/suggest">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        Admin
+        Suggest Restaurant
       </Link>
+      
       {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}

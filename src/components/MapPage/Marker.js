@@ -9,13 +9,39 @@ import RoomRoundedIcon from '@material-ui/icons/RoomRounded';
 class Marker extends Component {
     state = {
         heading: 'Class Component',
+        modalIsVisible: false
     };
 
+    showModal = (event) => {
+        this.setState({
+            modalIsVisible:true
+        })
+    
+
+    }
+
     render() {
+        
+        let detailsModal = <div></div>;
+
+        if (this.state.modalIsVisible == true){
+            detailsModal = <div className="details-box"></div>
+        } ;
+
+
         return (
             <div className="map-marker">
-                <h2>{this.state.heading}</h2>
-                <RoomRoundedIcon />
+                {detailsModal}
+                <div id="pane">
+                <RoomRoundedIcon 
+                    fontSize="large" 
+                    onClick={this.showModal}
+                    id="pin" />
+                </div>
+
+                <div className="map-div:after">jukjsdkfs</div>
+                
+
             </div>
         );
     }

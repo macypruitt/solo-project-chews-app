@@ -1,5 +1,18 @@
 .map-marker {
-    height: 20px;
-    width: 20px;
-    background-color: green;
+   color: #0582CA;
+   transition: all 0.3s ease-out;
+}
+
+.open-pane {
+    width:30px;
+    height: 40px;
+    background-color: blanchedalmond;
+}
+
+.details-box {
+    width: 90%;
+    height: 90%;
+    background-color: bisque;
+    border: solid white 1px;
+    position: absolute;
 }

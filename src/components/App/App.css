@@ -1,6 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-color: #FFE9AA;
 }
 
 .alert {
@@ -74,4 +75,37 @@ input {
     outline:0;
     border-bottom:1px solid #444; 
     cursor: pointer;
+}
+
+a:link{
+    color: black;
+}
+a:visited {
+    color: black;
+}
+
+tbody > tr:nth-child(odd) {
+    background-color: #FFE28c;
+}
+
+textarea {
+    max-width: 400px;
+    width: 90%;
+    height: 200px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.try: after{
+    content: "kjsfklsjlfsd";
+}
+
+.modal{
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    position: absolute;
+    z-index: 6;
+    margin-left: 5%;
+    margin-right: 5%;
 }

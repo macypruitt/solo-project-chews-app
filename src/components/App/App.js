@@ -39,9 +39,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Nav />
-          <Switch>
+        <div >
+          <Nav/>
+          <div className="map-div">
+          <Switch >
             <Redirect exact from="/" to="/map" />
             <Route
               exact
@@ -101,6 +102,7 @@ class App extends Component {
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
+          </div>
           <Footer />
         </div>
       </Router>

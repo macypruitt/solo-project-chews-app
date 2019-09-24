@@ -35,16 +35,17 @@ class SimpleMap extends Component {
             >
                 {item.name}
             </Marker>
-        )
-        
+        ) 
     })
 
-    console.log('rest array', restaurantsArray)
+    const detailsPane = <div className="modal">
+    </div>
 
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '92vh', width: '100%' }}>
-        
+      <div className="map-div">
+      <div  style={{ height: '92vh', width: '100%' }}>
+        {detailsPane}
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
           defaultCenter={this.props.center}
@@ -187,18 +188,11 @@ class SimpleMap extends Component {
         >
 
           {restaurantsArray}
-          <Marker
-            lat={39.07}
-            lng={-94.59}
-            text="checkssssssssssss"
-            />
+          
             
-          {/* <AnyReactComponent
-            lat={39.07}
-            lng={-94.59}
-            text="My Marker"
-          /> */}
+          
         </GoogleMapReact>
+        </div>
       </div>
     );
   }
