@@ -10,27 +10,20 @@ import { isTemplateElement } from '@babel/types';
 class Marker extends Component {
     state = {
         heading: 'Class Component',
-        modalIsVisible: false
+        modalIsVisible: false,
     };
-
 
     render() {
         
-
         return (
             <div className="map-marker">
                 
-                <div id="pane">
                 <RoomRoundedIcon 
                     fontSize="large" 
                     onClick={(event) => this.props.modalToggle(event, this.props.item)}
                     id="pin" 
                      />
-                </div>
-
                 
-                
-
             </div>
         );
     }

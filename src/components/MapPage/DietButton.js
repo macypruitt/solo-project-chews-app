@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 
-class DietButtons extends Component {
+class DietButton extends Component {
     
 
     render() {
         return (
-            <div className="diet-buttons" style={{ top: `${this.props.height}` }}>
+            <div className="diet-buttons" style={{ top: `${this.props.height}`, color: `rgb(0,0,0,${this.props.opacity})` }}>
                 <h2>{this.props.letter}</h2>
                 
                 
@@ -17,4 +17,4 @@ class DietButtons extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(DietButtons);
+export default connect(mapStoreToProps)(DietButton);

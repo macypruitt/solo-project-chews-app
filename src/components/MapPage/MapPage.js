@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
 import GoogleMapReact from 'google-map-react';
-import dotenv from 'dotenv';
-import './MapPage.css';
+import mapStoreToProps from '../../redux/mapStoreToProps';
+
 import Marker from './Marker';
 import Modal from './Modal';
-import DietButtons from './DietButtons';
+import DietButton from './DietButton';
 
-dotenv.config();
- 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-const styles = require('./GoogleMapStyles.json');
+const mapStyles = require('./GoogleMapStyles.json');
 
 class SimpleMap extends Component {
-
+    ////STATE handles modal and Keto, Vegan, Gluten-free filters
     state={
         modalIsShowing: false,
-        activeListing: ''
+        activeListing: '',
+        show: 'all'
     }
 
     static defaultProps = {
@@ -39,179 +36,126 @@ class SimpleMap extends Component {
     );
   }
 
+  changeFilter = (event, data) => {
+      this.setState({
+          ...this.state,
+          show: data
+      })
+      console.log(data)
+  }
+
+
+
+
+  
+
 
   render() {
     console.log(this.state);
+    ////CONDITIONAL RENDERING ACCORDING TO FILTER
+    let restaurantsArray; //holds restaurants to be shown
 
-    let restaurantsArray = this.props.store.restaurantsReducer.map((item, index) => {
-        return (
-            <Marker key={index} className="test"
-            lat={item.lat}
-            lng={item.lng}
-            modalToggle={this.handleModal}
-            item={item}
-            />
-        ) 
-    })
+    ////default is to render all approved restaurants
+    if(this.state.show == 'all'){
+        restaurantsArray = this.props.store.restaurantsReducer.map((item, index) => {
+            return (
+                <Marker key={index} className="test"
+                lat={item.lat}
+                lng={item.lng}
+                modalToggle={this.handleModal}
+                item={item}
+                />
+            ) 
+        })
+    }
+    ////if vegan is selected, show vegan restaurants
+    if(this.state.show == 'vegan'){
+        let veganRestaurants = this.props.store.restaurantsReducer.filter((item, index) => {
+            return item.vegan === true;
+        })
+
+        restaurantsArray = veganRestaurants.map((item, index) => {
+            return (
+                <Marker key={index} className="test"
+                lat={item.lat}
+                lng={item.lng}
+                modalToggle={this.handleModal}
+                item={item}
+                />
+            ) 
+        })
+    }
+    ////if gluten_free is selected, show gluten_free restaurants
+    if(this.state.show == 'gluten_free'){
+        let gfRestaurants = this.props.store.restaurantsReducer.filter((item, index) => {
+            return item.gluten_free === true;
+        })
+
+        restaurantsArray = gfRestaurants.map((item, index) => {
+            return (
+                <Marker key={index} className="test"
+                lat={item.lat}
+                lng={item.lng}
+                modalToggle={this.handleModal}
+                item={item}
+                />
+            ) 
+        })
+    }
+    ////if keto is selected, show keto restaurants
+    if(this.state.show == 'keto'){
+        let ketoRestaurants = this.props.store.restaurantsReducer.filter((item, index) => {
+            return item.keto === true;
+        })
+
+        restaurantsArray = ketoRestaurants.map((item, index) => {
+            return (
+                <Marker key={index} className="test"
+                lat={item.lat}
+                lng={item.lng}
+                modalToggle={this.handleModal}
+                item={item}
+                />
+            ) 
+        })
+    }
 
     
-    let detailsPane = <div></div>
 
+    ////MODAL pops up depending on state
+    let detailsPane = <div></div>
     if(this.state.modalIsShowing){
         detailsPane = <Modal id="modal" modalToggle={this.handleModal}></Modal>
     }
-
+   
     return (
-      // Important! Always set the container height explicitly
       <div className="map-div">
       <div  style={{ height: '92vh', width: '100%' }}>
-          <DietButtons height={'8px'} letter={'k k'}/>
+
+      {detailsPane} 
+          <div className="filter-buttons">
+         <button
+         onClick={(event) => this.changeFilter(event, 'keto')}>Keto</button> 
+         <button
+         onClick={(event) => this.changeFilter(event, 'vegan')}>Vegan</button> 
+         <button
+         onClick={(event) => this.changeFilter(event, 'gluten_free')}>Gluten-Free</button> 
+         <button
+         onClick={(event) => this.changeFilter(event, 'all')}>All</button> 
+         </div>
+         
+        
           
-        {detailsPane}
+        
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           options={{
-            styles: [
-            {
-                "featureType": "all",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#ffe9aa"
-                    }
-                ]
-            },
-            {
-                "featureType": "all",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "gamma": 0.01
-                    },
-                    {
-                        "lightness": 20
-                    }
-                ]
-            },
-            {
-                "featureType": "all",
-                "elementType": "labels.text.stroke",
-                "stylers": [
-                    {
-                        "saturation": -31
-                    },
-                    {
-                        "lightness": -33
-                    },
-                    {
-                        "weight": 2
-                    },
-                    {
-                        "gamma": 0.8
-                    }
-                ]
-            },
-            {
-                "featureType": "all",
-                "elementType": "labels.icon",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "lightness": 30
-                    },
-                    {
-                        "saturation": 30
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "saturation": 20
-                    }
-                ]
-            },
-            {
-                "featureType": "poi.park",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "lightness": 20
-                    },
-                    {
-                        "saturation": -20
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "saturation": "11"
-                    },
-                    {
-                        "lightness": "-11"
-                    },
-                    {
-                        "weight": "1.08"
-                    },
-                    {
-                        "gamma": "4.65"
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "lightness": 10
-                    },
-                    {
-                        "saturation": -30
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "geometry.stroke",
-                "stylers": [
-                    {
-                        "saturation": 25
-                    },
-                    {
-                        "lightness": 25
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "lightness": -20
-                    }
-                ]
-            }
-        ]}}
+            styles: mapStyles}}
         >
 
-          {restaurantsArray}
-          
-            
+          {restaurantsArray} 
           
         </GoogleMapReact>
         </div>

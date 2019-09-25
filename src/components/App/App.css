@@ -130,4 +130,29 @@ textarea {
     left: 16px;
     z-index: 6;
     line-height: 10px;
+    text-shadow: 2px 2px rgba(0,0,0,0.2);
+    color: rgb(0,0,0,.3)
+}
+
+.diet-buttons:hover {
+    position: absolute;
+    top: 70px;
+    left: 16px;
+    z-index: 6;
+    line-height: 10px;
+    text-shadow: 2px 2px rgba(0,0,0,0.2);
+    color: rgb(26, 209, 26, 1);
+}
+
+.map-marker {
+    color: #f34213
+}
+
+.filter-buttons {
+    position: absolute;
+    top: 82px;
+    left: 10px;
+    z-index: 6;
+    line-height: 10px;
+    
 }
