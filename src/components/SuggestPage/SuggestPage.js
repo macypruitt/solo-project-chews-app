@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { noConflict } from 'q';
+import Button from '@material-ui/core/Button'
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace 
@@ -52,12 +53,14 @@ class SubmitPage extends Component {
                 <input
                     type="text"
                     placeholder="Name"
+                    className="suggest-input"
                     onChange={(event) => this.handleChangeInputText(event, 'name')}>
                 </input>
                 <br></br>
                 <input
                     type="text"
                     placeholder="Address"
+                    className="suggest-input"
                     onChange={(event) => this.handleChangeInputText(event, 'address')}>
                 </input>
                 <br></br>
@@ -66,7 +69,8 @@ class SubmitPage extends Component {
                     placeholder="Description"
                     onChange={(event) => this.handleChangeInputText(event, 'description')}/>
                 <br></br>
-
+                
+                <div className="checkbox-div">
                 <input type="checkbox" name="keto" value="true" id="keto"
                     onChange={(event) => this.handleCheckbox(event, 'keto')}/>
                 <label for="keto">Keto</label>
@@ -79,8 +83,8 @@ class SubmitPage extends Component {
                     onChange={(event) => this.handleCheckbox(event, 'vegan')} />
                 <label for="vegan">Vegan</label>
                 <br></br>
-                <button onClick={this.handleClickSubmit} type="submit">Submit</button>
-                
+                <Button onClick={this.handleClickSubmit} type="submit">Submit</Button>
+                </div>
                 
             </div>
         );

@@ -90,14 +90,10 @@ tbody > tr:nth-child(odd) {
 
 textarea {
     max-width: 400px;
-    width: 90%;
+    width: 80%;
     height: 200px;
     padding: 10px;
     margin: 10px;
-}
-
-.try: after{
-    content: "kjsfklsjlfsd";
 }
 
 .modal{
@@ -113,7 +109,6 @@ textarea {
     margin-bottom: 10%;
     margin-right: 5%;
     text-align: center;
-    
 }
 
 
@@ -150,12 +145,30 @@ textarea {
 
 .filter-buttons {
     position: absolute;
-    top: 82px;
+    bottom: 30px;
     left: 10px;
-    z-index: 6;
+    z-index: 5;
     line-height: 10px;
 }
 
 .mui-buttons {
     background-color: white;
+    z-index: 5;
+}
+
+
+
+.checkbox-div {
+    display: inline;
+    text-align: center;
+    width: 100px;
+}
+
+.suggest-input {
+    max-width: 400px;
+    width: 80%;
+}
+
+.user-marker{
+    color: blue;
 }

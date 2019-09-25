@@ -1,5 +1,5 @@
 .nav-title {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     display: inline-block;
     color: ##000000;
@@ -36,7 +36,9 @@
 }
 
 .nav-logo {
-  height: 50px;
+  height: 25%;
+  max-height: 35px;
   align-self: center;
-  padding: 10px;
+  padding-top: 15px;
+  padding-left: 14px;
 }

@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import {createMuiTheme, withStyles, makeStyles} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
-import { green } from '@material-ui/core/colors';
+import RoomRoundedIcon from '@material-ui/icons/RoomRounded';
 
 import Marker from './Marker';
 import Modal from './Modal';
@@ -16,8 +16,8 @@ const mapStyles = require('./GoogleMapStyles.json');
 
 const theme = createMuiTheme({
     palette: {
-      primary: { main: '#FFE28C' }, // Purple and green play nicely together.
-      secondary: { main: '#9EDBFF' }, // This is just green.A700 as hex.
+      primary: { main: '#FFE9AA' }, 
+      secondary: { main: '#0582CA' }, 
     },
   });
 
@@ -27,7 +27,9 @@ class MapPage extends Component {
     state={
         modalIsShowing: false,
         activeListing: '',
-        show: 'all'
+        show: 'all',
+        lat: '',
+        lng: '',
     }
 
     static defaultProps = {
@@ -37,6 +39,14 @@ class MapPage extends Component {
         },
         zoom: 12
   };
+
+  
+  componentDidMount(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(this.onPositionReceived);
+    }
+  }
+
 
   handleModal = (event, data) => {
     this.setState(prevState => ({
@@ -57,13 +67,26 @@ class MapPage extends Component {
   }
 
 
+  onPositionReceived = (position) => {
+      this.setState({
+          lat: position.coords.latitude,
+          lng: position.coords.latitude
+      })
+    }   
 
 
-  
 
 
   render() {
-    console.log(this.state);
+    
+    
+   
+    
+    
+   
+    
+ 
+    
     ////CONDITIONAL RENDERING ACCORDING TO FILTER
     let restaurantsArray; //holds restaurants to be shown
 
@@ -132,7 +155,13 @@ class MapPage extends Component {
         })
     }
 
-    
+    const userPin =<RoomRoundedIcon 
+                        className="user-pin"
+                        fontSize="large" 
+                        lat={this.state.lat}
+                        lng={this.state.lng}
+                        id="pin" 
+                    />
 
     ////MODAL pops up depending on state
     let detailsPane = <div></div>
@@ -147,7 +176,7 @@ class MapPage extends Component {
       {detailsPane} 
           <div className="filter-buttons">
             <ThemeProvider theme={theme}>
-                <ButtonGroup size="small" variant="contained" color="secondary">
+                <ButtonGroup size="small" variant="contained" color="primary">
                     <Button 
                     onClick={(event) => this.changeFilter(event, 'keto')}>Keto</Button> 
                     <Button
@@ -161,7 +190,7 @@ class MapPage extends Component {
         </div>
          
         
-          
+        
         
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
@@ -172,7 +201,6 @@ class MapPage extends Component {
         >
 
           {restaurantsArray} 
-          
         </GoogleMapReact>
         </div>
       </div>
