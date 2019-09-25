@@ -5,6 +5,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import {createMuiTheme, withStyles, makeStyles} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
 import RoomRoundedIcon from '@material-ui/icons/RoomRounded';
+import gpslogo from './gpsicon.svg';
 
 import Marker from './Marker';
 import Modal from './Modal';
@@ -23,10 +24,9 @@ const theme = createMuiTheme({
 
 
 class MapPage extends Component {
-    ////STATE handles modal and Keto, Vegan, Gluten-free filters
+    ////STATE controls modal, diet filter, and stores user location
     state={
         modalIsShowing: false,
-        activeListing: '',
         show: 'all',
         lat: '',
         lng: '',
@@ -34,7 +34,7 @@ class MapPage extends Component {
 
     static defaultProps = {
         center: {
-            lat: 39.07,
+            lat: 39.04,
             lng: -94.59
         },
         zoom: 12
@@ -70,7 +70,7 @@ class MapPage extends Component {
   onPositionReceived = (position) => {
       this.setState({
           lat: position.coords.latitude,
-          lng: position.coords.latitude
+          lng: position.coords.longitude
       })
     }   
 
@@ -79,13 +79,6 @@ class MapPage extends Component {
 
   render() {
     
-    
-   
-    
-    
-   
-    
- 
     
     ////CONDITIONAL RENDERING ACCORDING TO FILTER
     let restaurantsArray; //holds restaurants to be shown
@@ -146,22 +139,19 @@ class MapPage extends Component {
         restaurantsArray = ketoRestaurants.map((item, index) => {
             return (
                 <Marker key={index} className="test"
-                lat={item.lat}
-                lng={item.lng}
-                modalToggle={this.handleModal}
-                item={item}
+                    lat={item.lat}
+                    lng={item.lng}
+                    modalToggle={this.handleModal}
+                    item={item}
                 />
             ) 
         })
     }
-
-    const userPin =<RoomRoundedIcon 
-                        className="user-pin"
-                        fontSize="large" 
-                        lat={this.state.lat}
-                        lng={this.state.lng}
-                        id="pin" 
-                    />
+    console.log(this.state.lng)
+    const userLat = this.state.lat;
+    const userLng = this.state.lng;
+    const userPinItem ='df'
+           
 
     ////MODAL pops up depending on state
     let detailsPane = <div></div>
@@ -172,36 +162,43 @@ class MapPage extends Component {
     return (
       <div className="map-div">
       <div  style={{ height: '92vh', width: '100%' }}>
-
       {detailsPane} 
-          <div className="filter-buttons">
+            <GoogleMapReact
+            bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
+            defaultCenter={this.props.center}
+            defaultZoom={this.props.zoom}
+            options={{
+            styles: mapStyles}}
+            >
+            
+                {restaurantsArray} 
+        
+
+            <div
+                className="user-pin"
+                lat={this.state.lat}
+                lng={this.state.lng}
+                
+            ><img src={gpslogo}></img></div>
+
+
+
+            </GoogleMapReact>
+        </div>
+
+        <div className="filter-buttons">
             <ThemeProvider theme={theme}>
                 <ButtonGroup size="small" variant="contained" color="primary">
                     <Button 
-                    onClick={(event) => this.changeFilter(event, 'keto')}>Keto</Button> 
+                        onClick={(event) => this.changeFilter(event, 'keto')}>Keto</Button> 
                     <Button
-                    onClick={(event) => this.changeFilter(event, 'vegan')}>Vegan</Button> 
+                        onClick={(event) => this.changeFilter(event, 'vegan')}>Vegan</Button> 
                     <Button
-                    onClick={(event) => this.changeFilter(event, 'gluten_free')}>Gluten-Free</Button> 
+                        onClick={(event) => this.changeFilter(event, 'gluten_free')}>Gluten-Free</Button> 
                     <Button
-                    onClick={(event) => this.changeFilter(event, 'all')}>All</Button> 
+                        onClick={(event) => this.changeFilter(event, 'all')}>All</Button> 
                 </ButtonGroup>
             </ThemeProvider>
-        </div>
-         
-        
-        
-        
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-          options={{
-            styles: mapStyles}}
-        >
-
-          {restaurantsArray} 
-        </GoogleMapReact>
         </div>
       </div>
     );

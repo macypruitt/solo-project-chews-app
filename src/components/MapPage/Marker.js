@@ -8,11 +8,6 @@ import { isTemplateElement } from '@babel/types';
 // the component name TemplateClass with the name for the new 
 // component.
 class Marker extends Component {
-    state = {
-        heading: 'Class Component',
-        modalIsVisible: false,
-    };
-
     render() {
         
         return (
