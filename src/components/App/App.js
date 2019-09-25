@@ -26,7 +26,10 @@ import AdminListPage from '../AdminListPage/AdminListPage';
 import EditPage from '../EditPage/EditPage';
 
 import './App.css';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+
 
 
 class App extends Component {

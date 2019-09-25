@@ -154,5 +154,8 @@ textarea {
     left: 10px;
     z-index: 6;
     line-height: 10px;
-    
+}
+
+.mui-buttons {
+    background-color: white;
 }

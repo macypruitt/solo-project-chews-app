@@ -61,9 +61,6 @@ function* getApprovedList(){
     }
   }
 
-
-
-
 function* restaurantsSaga() {
     yield takeLatest('GET_PINS', getApprovedList);
     yield takeLatest('SEND_SUBMIT', postNewSubmission);

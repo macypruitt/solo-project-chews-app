@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { isTemplateElement } from '@babel/types';
-
+import compass from '../MapPage/compass.svg'
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace 
 // the component name TemplateClass with the name for the new 
@@ -12,7 +12,7 @@ class TemplateClass extends Component {
         heading: 'Class Component',
     };
 
-    
+   
 
     render() {
         
@@ -32,7 +32,7 @@ class TemplateClass extends Component {
                     <br></br>
                     
                     <a href='{this.props.store.modalReducer.website}'>website</a>
-
+                    
 
                 </div>
 

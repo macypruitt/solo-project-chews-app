@@ -2,15 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GoogleMapReact from 'google-map-react';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import {createMuiTheme, withStyles, makeStyles} from '@material-ui/core/styles';
+import {ThemeProvider} from '@material-ui/styles';
+import { green } from '@material-ui/core/colors';
 
 import Marker from './Marker';
 import Modal from './Modal';
-import DietButton from './DietButton';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
 
 
 const mapStyles = require('./GoogleMapStyles.json');
 
-class SimpleMap extends Component {
+const theme = createMuiTheme({
+    palette: {
+      primary: { main: '#FFE28C' }, // Purple and green play nicely together.
+      secondary: { main: '#9EDBFF' }, // This is just green.A700 as hex.
+    },
+  });
+
+
+class MapPage extends Component {
     ////STATE handles modal and Keto, Vegan, Gluten-free filters
     state={
         modalIsShowing: false,
@@ -134,15 +146,19 @@ class SimpleMap extends Component {
 
       {detailsPane} 
           <div className="filter-buttons">
-         <button
-         onClick={(event) => this.changeFilter(event, 'keto')}>Keto</button> 
-         <button
-         onClick={(event) => this.changeFilter(event, 'vegan')}>Vegan</button> 
-         <button
-         onClick={(event) => this.changeFilter(event, 'gluten_free')}>Gluten-Free</button> 
-         <button
-         onClick={(event) => this.changeFilter(event, 'all')}>All</button> 
-         </div>
+            <ThemeProvider theme={theme}>
+                <ButtonGroup size="small" variant="contained" color="secondary">
+                    <Button 
+                    onClick={(event) => this.changeFilter(event, 'keto')}>Keto</Button> 
+                    <Button
+                    onClick={(event) => this.changeFilter(event, 'vegan')}>Vegan</Button> 
+                    <Button
+                    onClick={(event) => this.changeFilter(event, 'gluten_free')}>Gluten-Free</Button> 
+                    <Button
+                    onClick={(event) => this.changeFilter(event, 'all')}>All</Button> 
+                </ButtonGroup>
+            </ThemeProvider>
+        </div>
          
         
           
@@ -164,4 +180,4 @@ class SimpleMap extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(SimpleMap);
+export default connect(mapStoreToProps)(MapPage);

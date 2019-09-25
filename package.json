@@ -7,6 +7,7 @@
     "@google/maps": "^1.0.0",
     "@material-ui/core": "^4.4.3",
     "@material-ui/icons": "^4.4.3",
+    "@material-ui/styles": "^4.4.3",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
     "cookie-session": "^2.0.0-beta.3",
