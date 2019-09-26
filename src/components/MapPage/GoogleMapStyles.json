@@ -10,6 +10,27 @@
     },
     {
         "featureType": "all",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#00a2ff"
+            },
+            {
+                "saturation": "43"
+            },
+            {
+                "lightness": "-24"
+            },
+            {
+                "gamma": "1.28"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
         "elementType": "labels.text.fill",
         "stylers": [
             {
