@@ -9,9 +9,12 @@
 .nav {
   overflow: hidden;
   background-color: #FFE9AA;
+  box-shadow: 5px 5px black;
+  z-index: 6;
 }
 
 .nav-link {
+  font-family: Helvetic, sans-serif;
   float: left;
   color: ##000000;
   background-color: ##FFE9AA;
