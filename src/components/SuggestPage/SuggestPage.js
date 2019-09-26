@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { noConflict } from 'q';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import Swal from 'sweetalert2';
+
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace 
@@ -42,7 +43,13 @@ class SubmitPage extends Component {
 
     handleClickSubmit = (event) => {
        this.props.dispatch({type:'SEND_SUBMIT', payload: this.state});
-
+        Swal.fire({
+            text: 'Thanks for your suggestion!',
+            type: 'success',
+            confirmButtonText: 'Map'
+        }).then((result) => {
+            this.props.history.push(`/map`);
+        })
     }
 
 
