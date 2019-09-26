@@ -19,7 +19,7 @@ class Modal extends Component {
                 <Button size="small" className="btn-exit-modal" onClick={this.props.modalToggle}>X</Button>
 
                 <div className="modal-content">
-                    <h3>{this.props.store.modalReducer.name}</h3>
+                    <h3 className="modal-title">{this.props.store.modalReducer.name}</h3>
                     {this.props.store.modalReducer.address}
                     {this.props.store.modalReducer.phone}
                     
