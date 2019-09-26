@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import AdminListItem from '../AdminListItem/AdminListItem';
-
+import moment from 'moment';
 
 
 class AdminListPage extends Component {

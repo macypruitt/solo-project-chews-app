@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import {createMuiTheme, withStyles, makeStyles} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
+import moment from 'moment';
 import RoomRoundedIcon from '@material-ui/icons/RoomRounded';
 import gpslogo from './gpsicon.svg';
 
@@ -178,7 +179,6 @@ class MapPage extends Component {
                 className="user-pin"
                 lat={this.state.lat}
                 lng={this.state.lng}
-                
             ><img src={gpslogo}></img></div>
 
 
