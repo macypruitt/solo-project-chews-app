@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cae8ba55.chunk.css",
+    "main.js": "/static/js/main.601a4921.chunk.js",
+    "main.js.map": "/static/js/main.601a4921.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.4f3a269a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.4f3a269a.js.map",
+    "static/js/2.50114e7e.chunk.js": "/static/js/2.50114e7e.chunk.js",
+    "static/js/2.50114e7e.chunk.js.map": "/static/js/2.50114e7e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.cb80cde41e383ffa8e1f35a3b639f6ae.js": "/precache-manifest.cb80cde41e383ffa8e1f35a3b639f6ae.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.cae8ba55.chunk.css.map": "/static/css/main.cae8ba55.chunk.css.map",
+    "static/media/compass.svg": "/static/media/compass.74f3e470.svg",
+    "static/media/gpsicon.svg": "/static/media/gpsicon.440ea8fe.svg",
+    "static/media/logo.png": "/static/media/logo.2b430c5a.png",
+    "static/media/restaurant.svg": "/static/media/restaurant.d9af8db5.svg"
+  }
+}

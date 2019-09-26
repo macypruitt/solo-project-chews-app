@@ -36,7 +36,7 @@ class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'});
     this.props.dispatch({type: 'GET_PINS'});
-    
+    console.log(process.env.REACT_APP_GOOGLE_MAPS);
   }
 
   render() {

@@ -1,0 +1,186 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.4
+-- Dumped by pg_dump version 11.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: restaurants; Type: TABLE; Schema: public; Owner: macypruitt
+--
+
+CREATE TABLE public.restaurants (
+    id integer NOT NULL,
+    name character varying(30),
+    address character varying(150),
+    phone character varying(15),
+    description character varying(500),
+    website character varying(30),
+    keto boolean,
+    gluten_free boolean,
+    vegan boolean,
+    submitted timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    approved boolean,
+    lat numeric,
+    lng numeric
+);
+
+
+ALTER TABLE public.restaurants OWNER TO macypruitt;
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE; Schema: public; Owner: macypruitt
+--
+
+CREATE SEQUENCE public.restaurants_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.restaurants_id_seq OWNER TO macypruitt;
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: macypruitt
+--
+
+ALTER SEQUENCE public.restaurants_id_seq OWNED BY public.restaurants.id;
+
+
+--
+-- Name: user; Type: TABLE; Schema: public; Owner: macypruitt
+--
+
+CREATE TABLE public."user" (
+    id integer NOT NULL,
+    username character varying(80) NOT NULL,
+    password character varying(1000) NOT NULL
+);
+
+
+ALTER TABLE public."user" OWNER TO macypruitt;
+
+--
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: macypruitt
+--
+
+CREATE SEQUENCE public.user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id_seq OWNER TO macypruitt;
+
+--
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: macypruitt
+--
+
+ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
+
+
+--
+-- Name: restaurants id; Type: DEFAULT; Schema: public; Owner: macypruitt
+--
+
+ALTER TABLE ONLY public.restaurants ALTER COLUMN id SET DEFAULT nextval('public.restaurants_id_seq'::regclass);
+
+
+--
+-- Name: user id; Type: DEFAULT; Schema: public; Owner: macypruitt
+--
+
+ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regclass);
+
+
+--
+-- Data for Name: restaurants; Type: TABLE DATA; Schema: public; Owner: macypruitt
+--
+
+COPY public.restaurants (id, name, address, phone, description, website, keto, gluten_free, vegan, submitted, approved, lat, lng) FROM stdin;
+1	Macy's BBQ Bonanze	553 Central Ave, Kansas City, KS 66101	(913) 213-3736	Burnt ends, no bread with a side salad. Keto babay!	slapsbbqkc.com	t	f	f	2017-01-01 00:00:00	t	39	94
+16	Myrons House	1701 Main St, Kansas City, MO 64108, USA	\N	meat	\N	t	f	f	2019-09-26 09:56:59.643349	f	39.0932786	-94.5831797
+2	clesu	22s fdjk	\N	big sawg	\N	f	t	f	2019-09-26 09:56:59.643349	f	34	45
+7	Weinersnitzel hut	115 Morningside Dr, Kansas City, MO 64113, USA	\N	the best eva	\N	f	f	t	2019-09-26 09:56:59.643349	t	39.0183727	-94.58624359999999
+8	True Food Kitchen	4749 Pennsylvania Ave, Kansas City, MO 64112, USA	\N	Lots of gluten free and vegan options	\N	f	t	t	2019-09-26 09:56:59.643349	f	39.0403786	-94.5936464
+10	Pigwich	City Market Apartments, 20 E 5th St, Kansas City, MO 64106, USA	\N	Pig out with a mountain of meat sans bun	\N	t	f	f	2019-09-26 09:56:59.643349	t	39.1086335	-94.58239359999999
+12	Beyonce's Cafe	3700 Main St, Kansas City, MO 64111, USA	\N		\N	f	f	t	2019-09-26 09:56:59.643349	t	39.060059	-94.5863229
+13	Baramee Thai	1810 Baltimore Ave, Kansas City, MO 64108, USA	816-098-0987	curry so spicy	www.barmeesknees.za	f	t	f	2019-09-26 09:56:59.643349	t	39.0914272	-94.5849503
+9	Room 39	1719 W 39th St, Kansas City, MO 64111, USA	\N	the bomb diggity, na mean?	\N	f	t	t	2019-09-26 09:56:59.643349	f	39.0570945	-94.605921
+14	scotts house	1301 Oak St, Kansas City, MO 64106, USA	\N	apples and spicy peanuyts	\N	t	f	f	2019-09-26 09:56:59.643349	f	39.09832830000001	-94.57812059999999
+15	Rachel's house	1301 Oak St, Kansas City, MO 64106, USA	\N	apples and spicy peanuyts	\N	t	f	f	2019-09-26 09:56:59.643349	t	39.09832830000001	-94.57812059999999
+\.
+
+
+--
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: macypruitt
+--
+
+COPY public."user" (id, username, password) FROM stdin;
+1	admin	$2b$10$T0Qp9F3xliM.ILYIR1Yr/eyZGw4eDBg1ocOZJlRRitUVKfNjvZpRS
+\.
+
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE SET; Schema: public; Owner: macypruitt
+--
+
+SELECT pg_catalog.setval('public.restaurants_id_seq', 16, true);
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: macypruitt
+--
+
+SELECT pg_catalog.setval('public.user_id_seq', 1, true);
+
+
+--
+-- Name: restaurants restaurants_pkey; Type: CONSTRAINT; Schema: public; Owner: macypruitt
+--
+
+ALTER TABLE ONLY public.restaurants
+    ADD CONSTRAINT restaurants_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: macypruitt
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user user_username_key; Type: CONSTRAINT; Schema: public; Owner: macypruitt
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_username_key UNIQUE (username);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
