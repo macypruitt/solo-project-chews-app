@@ -9,16 +9,19 @@ class Modal extends Component {
         ////item is specific listing we are viewing
         const item = this.props.store.modalReducer
 
-        ////dietIndicator displays diet category inside modal
-        let dietIndicator;
+        ////Displays diet category inside modal
+        let ketoIndicator;
+        let veganIndicator;
+        let gfIndicator;
+
         if (this.props.store.modalReducer.keto == true){
-            dietIndicator = 'KETO'
+            ketoIndicator = 'KETO'
         }
         if (this.props.store.modalReducer.vegan == true){
-            dietIndicator = 'VEGAN'
+            veganIndicator = ' VEGAN'
         }
         if (this.props.store.modalReducer.gluten_free == true){
-            dietIndicator = 'GLUTEN-FREE'
+            gfIndicator = ' GLUTEN-FREE'
         }
 
         ////cleaning up the address
@@ -41,7 +44,9 @@ class Modal extends Component {
                     <div className="modal-content">
                         <br />
                         <h3 className="modal-title">{this.props.store.modalReducer.name}</h3>
-                        <div className="diet">{dietIndicator}</div>
+                        <div className="diet">
+                            {ketoIndicator}{veganIndicator}{gfIndicator}
+                        </div>
                         
                         
 

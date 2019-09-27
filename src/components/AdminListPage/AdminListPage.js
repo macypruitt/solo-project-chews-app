@@ -26,7 +26,7 @@ class AdminListPage extends Component {
                     <tr>
                         <th>Name</th>
                         <th>Status</th>
-                        <th>Date</th>
+                        <th>Submitted on</th>
                         <th>Edit</th>
                     </tr>
                     <tbody>
