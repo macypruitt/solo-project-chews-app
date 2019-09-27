@@ -29,15 +29,12 @@ class SubmitPage extends Component {
             ...this.state,
             [dataKey]: fieldValue,
         })
-        console.log(this.state);
     }
 
     handleCheckbox(event,dataKey) {
         this.setState({
             ...this.state,
             [dataKey]: event.target.checked
-        }, () => {
-            console.log(this.state)
         })
     }
 
@@ -56,6 +53,7 @@ class SubmitPage extends Component {
     render() {
         return (
             <div className="submit-view">
+                <div className="map-spacer"></div>
                 <h2>Submit a suggestion for Chews</h2>
                 <input
                     type="text"

@@ -8,7 +8,7 @@ import logo from '../Nav/logo.png'
 
 const Nav = (props) => (
   <div className="nav">
-    <Link to="/home">
+    <Link to="/map">
       <img src={logo} className="nav-logo" alt="Chews"></img>
     </Link>
     <div className="nav-right">

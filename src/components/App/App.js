@@ -57,7 +57,6 @@ class App extends Component {
                 path="/map"
                 component={MapPage}
               />
-              {/* If the user is logged in, they will be redirected to the authRedirect path provided. */}
               <ProtectedRoute
                 exact
                 path="/admin"
@@ -67,18 +66,21 @@ class App extends Component {
                 path="/edit/:id"
                 component={EditPage}
               />
+              
+              {/* If the user is logged in,they will be redirected to the authRedirect path provided. */}
               <ProtectedRoute
                 exact
                 path="/login"
                 authRedirect="/admin"
                 component={LoginPage}
               />
-              <ProtectedRoute
+              {/* <Route
                 exact
                 path="/registration"
-                authRedirect="/admin"
+                authRedirect="/registration"
                 component={RegisterPage}
-              />
+              /> */}
+
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
             </Switch>
