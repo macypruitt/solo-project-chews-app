@@ -23,12 +23,21 @@ body {
     text-align: center;
 
 }
+.editpage-div{
+    text-align: center;
+    margin: auto;
+}
 .edit-box{
     border: 1px solid black;
     text-align: center;
     width: 80%;
-    display: inline-block;
-    margin: 3px;
+    margin: auto;
+    margin-bottom: 10px;
+    
+}
+
+.editpage-spacer{
+    height: 80px;
 }
 
 form {

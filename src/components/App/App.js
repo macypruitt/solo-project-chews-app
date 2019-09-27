@@ -26,6 +26,13 @@ import './App.css';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#FFE9AA' }, 
+    secondary: { main: '#0582CA' }, 
+  },
+});
+
 class App extends Component {
 
   ////let's check if user is an admin and get the list of approved restaurants
@@ -36,6 +43,7 @@ class App extends Component {
 
   render() {
     return (
+      <ThemeProvider theme={theme}>
       <Router>
         <div>
           <Nav/>
@@ -74,6 +82,8 @@ class App extends Component {
                 authRedirect="/admin"
                 component={LoginPage}
               />
+              
+              />
               {/* <Route
                 exact
                 path="/registration"
@@ -88,6 +98,7 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
+      </ThemeProvider>
   )}
 }
 

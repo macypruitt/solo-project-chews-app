@@ -13,12 +13,7 @@ import Button from '@material-ui/core/Button';
 ////mapStyles JSON generated at Snazzymaps.com
 const mapStyles = require('./GoogleMapStyles.json');
 
-const theme = createMuiTheme({
-    palette: {
-      primary: { main: '#FFE9AA' }, 
-      secondary: { main: '#0582CA' }, 
-    },
-  });
+
 
 class MapPage extends Component {
     ////STATE controls modal, diet filter, and stores user location
@@ -182,7 +177,7 @@ class MapPage extends Component {
                 </div>
 
             <div className="filter-buttons">
-                <ThemeProvider theme={theme}>
+                
                     <ButtonGroup size="small" variant="contained" color="primary">
                         <Button 
                             onClick={(event) => this.changeFilter(event, 'keto')}>Keto</Button> 
@@ -193,7 +188,7 @@ class MapPage extends Component {
                         <Button
                             onClick={(event) => this.changeFilter(event, 'all')}>All</Button> 
                     </ButtonGroup>
-                </ThemeProvider>
+                
             </div>
       </div>
     );

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+
+////styles
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
+import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
-// Basic class component structure for React with default state
-// value setup. When making a new component be sure to replace 
-// the component name TemplateClass with the name for the new 
-// component.
 class SubmitPage extends Component {
     state = {
         name: '',
@@ -55,42 +56,60 @@ class SubmitPage extends Component {
             <div className="submit-view">
                 <div className="map-spacer"></div>
                 <h2>Submit a suggestion for Chews</h2>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    className="suggest-input"
-                    onChange={(event) => this.handleChangeInputText(event, 'name')}>
-                </input>
-                <br></br>
-                <input
-                    type="text"
-                    placeholder="Address"
-                    className="suggest-input"
-                    onChange={(event) => this.handleChangeInputText(event, 'address')}>
-                </input>
-                <br></br>
-                <textarea
-                    type="text"
-                    placeholder="Description"
-                    onChange={(event) => this.handleChangeInputText(event, 'description')}/>
-                <br></br>
-                
-                <div className="checkbox-div">
-                <input type="checkbox" name="keto" value="true" id="keto"
-                    onChange={(event) => this.handleCheckbox(event, 'keto')}/>
-                <label for="keto">Keto</label>
 
-                <input type="checkbox" name="gluten_free" value="true" id="gluten_free"
-                    onChange={(event) => this.handleCheckbox(event, 'gluten_free')}/>
-                <label for="gluten_free">Gluten-free</label>
-
-                <input type="checkbox" name="vegan" value="true" id="vegan"
-                    onChange={(event) => this.handleCheckbox(event, 'vegan')} />
-                <label for="vegan">Vegan</label>
-                <br></br>
+                <TextField
+                    label="Name"
+                    className="suggest-input"
+                    onChange={(event) => this.handleChangeInputText(event, 'name')}
+                />
+                <br/>
+                <TextField
+                    label="Address"
+                    className="suggest-input"
+                    onChange={(event) => this.handleChangeInputText(event, 'address')}
+                />
+                <br/>
+                <TextField
+                    
+                    label="Description"
+                    multiline
+                    rowsMax="8"
+                    className="suggest-input"
+                    onChange={(event) => this.handleChangeInputText(event, 'description')}
+                    
+                    margin="normal"
+                />
+                <br/>
+                <FormControlLabel
+                    control={
+                        <Checkbox value="true" 
+                            checked={this.state.keto} 
+                            onChange={(event) => this.handleCheckbox(event, 'keto')} value="true"
+                            color="secondary" />
+                    }
+                    label="Keto"
+                />
+                <FormControlLabel
+                    control={
+                        <Checkbox value="true" 
+                            checked={this.state.vegan} 
+                            onChange={(event) => this.handleCheckbox(event, 'vegan')} value="true"
+                            color="secondary" />
+                    }
+                    label="Vegan"
+                />
+                <FormControlLabel
+                    control={
+                        <Checkbox value="true" 
+                            checked={this.state.gluten_free} 
+                            onChange={(event) => this.handleCheckbox(event, 'gluten_free')} value="true"
+                            color="secondary" />
+                    }
+                    label="Gluten-free"
+                />
+                <br/>
                 <Button onClick={this.handleClickSubmit} type="submit">Submit</Button>
-                </div>
-                
+
             </div>
         );
     }

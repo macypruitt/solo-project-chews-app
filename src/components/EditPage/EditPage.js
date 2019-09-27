@@ -114,8 +114,10 @@ class EditPage extends Component {
         };
 
         return (
-            <div className="edit-box">
+            <div className="editpage-div">
+                <div className="editpage-spacer"></div>
                 <div className="edit-box">
+                    
                     <p>Name: {listingFromDatabase.name}</p>
                     <input type="text"
                         onChange={(event) => this.handleChangeInputText(event, 'name')}
@@ -142,10 +144,10 @@ class EditPage extends Component {
                 
                 <div className="edit-box">
                     <p>Description: {listingFromDatabase.description}</p>
-                    <input type="text"
+                    <textarea
                         onChange={(event) => this.handleChangeInputText(event, 'description')}
                         placeholder="New description">
-                    </input>
+                    </textarea>
                 </div>
                 
                 <div className="edit-box">
