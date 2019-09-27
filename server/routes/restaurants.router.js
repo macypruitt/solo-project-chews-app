@@ -20,7 +20,8 @@ router.get('/approved', (req, res) => {
 
 ////GET LIST OF ALL RESTAURANTS (PENDING AND APPROVED)
 router.get('/all', (req, res) => {
-    const queryText = `SELECT * FROM "restaurants";`
+    const queryText = `SELECT * FROM "restaurants"
+                        ORDER BY "approved" ASC;`
 
     pool.query(queryText)
         .then((response) => {
