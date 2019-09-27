@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-
 class EditPage extends Component {
 
     ////We store edit-in-progress in the state
@@ -116,6 +115,7 @@ class EditPage extends Component {
         return (
             <div className="editpage-div">
                 <div className="editpage-spacer"></div>
+                
                 <div className="edit-box">
                     
                     <p>Name: {listingFromDatabase.name}</p>
@@ -125,6 +125,7 @@ class EditPage extends Component {
                         id="js-name-input">
                     </input>
                 </div>
+                
 
                 <div className="edit-box">
                     <p>Address: {listingFromDatabase.address}</p>

@@ -44,12 +44,12 @@ class SubmitPage extends Component {
         Swal.fire({
             text: 'Thanks for your suggestion!',
             type: 'success',
-            confirmButtonText: 'Map'
+            confirmButtonText: 'Back to Map',
+            background: '#FFE9AA'
         }).then((result) => {
             this.props.history.push(`/map`);
         })
     }
-
 
     render() {
         return (
