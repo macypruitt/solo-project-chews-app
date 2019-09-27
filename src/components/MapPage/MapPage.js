@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import {createMuiTheme, withStyles, makeStyles} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
-import moment from 'moment';
+
 import RoomRoundedIcon from '@material-ui/icons/RoomRounded';
 import gpslogo from './gpsicon.svg';
 
@@ -161,8 +161,9 @@ class MapPage extends Component {
     }
    
     return (
-      <div className="map-div">
-      <div  style={{ height: '92vh', width: '100%' }}>
+      <div className="map-page">
+          <div className="map-spacer"></div>
+      <div  style={{ height: '93vh', width: '100%', bottom: '0px'}}>
       {detailsPane} 
             <GoogleMapReact
             bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}

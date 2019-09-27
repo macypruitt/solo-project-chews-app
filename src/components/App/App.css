@@ -61,7 +61,7 @@ input {
 
 .submit-view {
     text-align: center;
-    margin: auto;
+    
 
 }
 
@@ -117,33 +117,8 @@ textarea {
     font-size: 2em
 }
 
-
-
-
-
-
 .btn-exit-modal{
     float: right;
-}
-
-.diet-buttons {
-    position: absolute;
-    top: 70px;
-    left: 16px;
-    z-index: 6;
-    line-height: 10px;
-    text-shadow: 2px 2px rgba(0,0,0,0.2);
-    color: rgb(0,0,0,.3)
-}
-
-.diet-buttons:hover {
-    position: absolute;
-    top: 70px;
-    left: 16px;
-    z-index: 6;
-    line-height: 10px;
-    text-shadow: 2px 2px rgba(0,0,0,0.2);
-    color: rgb(26, 209, 26, 1);
 }
 
 .map-marker {
@@ -152,8 +127,8 @@ textarea {
 
 .filter-buttons {
     position: absolute;
-    bottom: 30px;
-    left: 10px;
+    bottom: 5px;
+    left: 5px;
     z-index: 5;
     line-height: 10px;
 }
@@ -162,8 +137,6 @@ textarea {
     background-color: white;
     z-index: 5;
 }
-
-
 
 .checkbox-div {
     display: inline;
@@ -181,4 +154,12 @@ textarea {
     height: 20px;
     text-shadow: 3px, 3px;
     color: #0582CA;
+}
+
+.map-spacer{
+    height: 65px;
+}
+
+.admin-list-spacer{
+    height: 70px;
 }
