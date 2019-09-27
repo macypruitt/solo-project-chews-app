@@ -13,6 +13,8 @@ class AdminListItem extends Component {
     render() {
         ////Shows date listing was submitted
         const date = moment(this.props.listing.submitted).format("MMM Do YY"); 
+        
+        ////Checks whether status is approved
         let status = 'pending';
         if(this.props.listing.approved == true){
             status =  'approved'

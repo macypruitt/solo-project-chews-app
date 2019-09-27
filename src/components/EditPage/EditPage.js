@@ -4,6 +4,8 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 
 class EditPage extends Component {
+
+    ////We store edit-in-progress in the state
     state = {
         name:'',
         address: '',
@@ -19,10 +21,11 @@ class EditPage extends Component {
     };
 
     componentDidMount(){
+        ////GET the single listing to edit
         this.props.dispatch({type: 'GET_EDIT', payload:this.props.match.params.id});
-        
     }
 
+    ////change handlers for form
     handleChangeInputText(event, dataKey) {
         const fieldValue = event.target.value;
         this.setState({
@@ -42,20 +45,16 @@ class EditPage extends Component {
     }
 
     handleClickSubmit = (event) => {
+        ////On click, we consolidate past and new listing, then PUT in database, then go back to list
         const dispatchObject = this.consolidateEdit();
         this.props.dispatch({type:'PUT_EDIT', payload: dispatchObject});
         this.props.history.push('/admin')
      }
 
-    deleteListing = (event) => {
-        this.props.dispatch({type:'DELETE_LISTING', payload: this.props.match.params.id});
-        this.props.history.push('/admin');
-    }
-
     consolidateEdit(){
-       
+        ////Starting with the original listing, we add any modifications from state
         let submitThisObject = this.props.store.editReducer[0];
-        console.log('item to submit pre edit', submitThisObject);
+        
         if(this.state.name !==''){
             submitThisObject.name = this.state.name;
         }
@@ -86,12 +85,17 @@ class EditPage extends Component {
         if(this.state.approved !==''){
             submitThisObject.approved = this.state.approved;
         };
-        console.log('item to submit post edit', submitThisObject);
+
         return submitThisObject;
     }
 
+    deleteListing = (event) => {
+        this.props.dispatch({type:'DELETE_LISTING', payload: this.props.match.params.id});
+        this.props.history.push('/admin');
+    }
+
     render() {
-        
+        ////listingFromDatabase object prevents error if GET request hasn't returned yet
         let listingFromDatabase = {
             name:'',
             address: '',
@@ -180,10 +184,13 @@ class EditPage extends Component {
                 <input type="checkbox" name="vegan" value="true" id="vegan"
                     onChange={(event) => this.handleCheckbox(event, 'vegan')} />
                 <label for="vegan">Vegan</label>
-                <br></br>
+
+                <br/>
+
                 <input type="checkbox" name="approved" value="true" id="approved"
                     onChange={(event) => this.handleCheckbox(event, 'approved')} />
                 <label for="approved">Approved</label>
+
                 <button onClick={this.handleClickSubmit} type="submit">Save</button>
                 <button onClick={this.deleteListing}>Delete</button>
             </div>

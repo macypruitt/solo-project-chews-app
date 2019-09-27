@@ -9,7 +9,6 @@ import { isTemplateElement } from '@babel/types';
 // component.
 class Marker extends Component {
     render() {
-        
         return (
             <div className="map-marker">
                 
@@ -17,7 +16,7 @@ class Marker extends Component {
                     fontSize="large" 
                     onClick={(event) => this.props.modalToggle(event, this.props.item)}
                     id="pin" 
-                     />
+                />
                 
             </div>
         );

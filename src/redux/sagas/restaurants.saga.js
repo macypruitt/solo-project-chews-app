@@ -68,7 +68,6 @@ function* restaurantsSaga() {
     yield takeLatest('GET_EDIT', getEditItem);
     yield takeLatest('PUT_EDIT', updateEditItem);
     yield takeLatest('DELETE_LISTING', deleteListing)
-    //yield takeLatest('POST_DB', postToDatabase);
   }
   
   export default restaurantsSaga;

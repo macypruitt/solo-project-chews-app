@@ -65,7 +65,6 @@ input {
 
 }
 
-/* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
     background:none;
     color:inherit;
@@ -109,12 +108,18 @@ textarea {
     margin-bottom: 30%;
     margin-right: 5%;
     text-align: center;
-    font-family: Helvetics, sans-serif;
+    font-family: Helvetica, sans-serif;
+}
+
+.modal-content{
+    text-align: center;
+    margin: auto;
 }
 
 .modal-title {
     font-family: 'Yesteryear', cursive;
-    font-size: 2em
+    font-size: 2em;
+    text-align: center;
 }
 
 .btn-exit-modal{
@@ -162,4 +167,8 @@ textarea {
 
 .admin-list-spacer{
     height: 70px;
+}
+
+.silverware{
+    padding: 20px;
 }
