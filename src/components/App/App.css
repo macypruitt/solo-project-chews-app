@@ -124,6 +124,11 @@ textarea {
     text-align: center;
 }
 
+.diet{
+    font-style: italic;
+    font-size:.8em;
+}
+
 .modal-title {
     font-family: 'Yesteryear', cursive;
     font-size: 2em;
@@ -179,4 +184,8 @@ textarea {
 
 .silverware{
     padding: 20px;
+}
+
+h3{
+    margin-bottom:5px;
 }
