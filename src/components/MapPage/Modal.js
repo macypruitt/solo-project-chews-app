@@ -21,6 +21,16 @@ class Modal extends Component {
             dietIndicator = 'GLUTEN-FREE'
         }
 
+        ////cleaning up the address
+            let newAddress = '';
+            if(this.props.store.modalReducer.address){
+                let address = this.props.store.modalReducer.address;
+            
+                newAddress = address.split(',');
+                newAddress.pop();
+                newAddress = newAddress.join(', ');
+            }
+
         return (
             <div>
                 <div className="modal">
@@ -35,7 +45,7 @@ class Modal extends Component {
                         
                         
 
-                        <p>{this.props.store.modalReducer.address}</p>
+                        <p>{newAddress}</p>
                         <p>{this.props.store.modalReducer.phone}</p>
                         
                         <img src={Silverware} className="silverware"></img>
