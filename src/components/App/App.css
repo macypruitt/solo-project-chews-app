@@ -70,7 +70,19 @@ input {
 
 .submit-view {
     text-align: center;
+
     
+}
+
+.form-control{
+    max-width: 500px;
+    width: 80%;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+.checkboxes{
 
 }
 
@@ -188,4 +200,11 @@ textarea {
 
 h3{
     margin-bottom:5px;
+}
+
+.g-recaptcha{
+   margin: auto;
+   background-color: #FFE9AA;
+   text-align: center;
+   display: inline-block;
 }

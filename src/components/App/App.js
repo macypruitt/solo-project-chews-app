@@ -1,4 +1,3 @@
-////import modules
 import React, {Component} from 'react';
 import {
   HashRouter as Router,
@@ -8,6 +7,7 @@ import {
 } from 'react-router-dom';
 import {connect} from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import ReCAPTCHA from "react-google-recaptcha";
 
 ////import components
 import Nav from '../Nav/Nav';
@@ -39,6 +39,7 @@ class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'});
     this.props.dispatch({type: 'GET_PINS'});
+    
   }
 
   render() {
