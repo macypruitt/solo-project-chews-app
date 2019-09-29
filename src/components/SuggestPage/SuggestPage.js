@@ -52,6 +52,7 @@ class SubmitPage extends Component {
             this.props.history.push(`/map`);
         }) 
     }
+    
 
     // onChange(value) {
     //     console.log("Captcha value:", value);
