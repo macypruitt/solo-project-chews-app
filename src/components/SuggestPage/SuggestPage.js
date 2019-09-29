@@ -25,6 +25,9 @@ class SubmitPage extends Component {
         submitted: ''
     };
 
+    componentDidMount(){
+        window.location.href = "http://chews-me.herokuapp.com/#/suggest";
+    }
     handleChangeInputText(event, dataKey) {
         const fieldValue = event.target.value;
         this.setState({
