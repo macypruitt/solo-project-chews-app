@@ -22,7 +22,7 @@ class SubmitPage extends Component {
         keto: false,
         gluten_free: false,
         vegan: false,
-        submitted: ''
+        submitted: '',
     };
 
     componentDidMount(){
@@ -57,9 +57,13 @@ class SubmitPage extends Component {
     }
     
 
-    // onChange(value) {
-    //     console.log("Captcha value:", value);
-    //   }
+    onChange(value) {
+        if(value){
+            this.setState({
+                ...this.state
+            })
+        }
+      }
 
     render() {
 
