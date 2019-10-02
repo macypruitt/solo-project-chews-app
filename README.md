@@ -27,7 +27,7 @@ To see the fully functional site, please visit: https://www.chews-me.herokuapp.c
 Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
-- PostgreSQL
+- PostgreSQL (https://www.postgresql.org/download/)
 
 ## Installation
 
