@@ -18,8 +18,8 @@ To see the fully functional site, please visit: https://www.chews-me.herokuapp.c
 
 ## Screen Shots
 
-(https://macypruitt.github.io/github-images/chews-map.png)
-(https://macypruitt.github.io/github-images/chews-modal.png)
+![Screenshot-map](https://macypruitt.github.io/github-images/chews-map.png)
+![Screenshot-modal](https://macypruitt.github.io/github-images/chews-modal.png)
 
 
 ### Prerequisites
