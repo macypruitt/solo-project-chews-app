@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import {connect} from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import ReCAPTCHA from "react-google-recaptcha";
 
 ////import components
 import Nav from '../Nav/Nav';
@@ -39,7 +38,6 @@ class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'});
     this.props.dispatch({type: 'GET_PINS'});
-    
   }
 
   render() {
@@ -53,19 +51,22 @@ class App extends Component {
               <Redirect exact from="/" to="/map" />
               <Route
                 exact
+                path="/map"
+                component={MapPage}
+              />
+              
+              <Route
+                exact
                 path="/suggest"
                 component={SuggestPage}
               />
+
               <Route
                 exact
                 path="/home"
                 component={LandingPage}
               />
-              <Route
-                exact
-                path="/map"
-                component={MapPage}
-              />
+              
               <ProtectedRoute
                 exact
                 path="/admin"

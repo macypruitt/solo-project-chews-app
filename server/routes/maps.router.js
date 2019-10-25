@@ -20,8 +20,6 @@ router.post('/', (req, res) => {
             dataObject.lng=coordinates.lng;
         dataObject.address=response.json.results[0].formatted_address;
         
-        console.log('check it out', dataObject);
-
         const queryText = `INSERT INTO "restaurants" 
         ("name","address","description","keto","gluten_free","vegan","approved","lat","lng")
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
@@ -48,7 +46,5 @@ router.post('/', (req, res) => {
         res.sendStatus(500);
     });
 });
-
-
 
 module.exports = router;

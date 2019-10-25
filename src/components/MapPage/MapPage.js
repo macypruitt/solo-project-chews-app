@@ -2,21 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GoogleMapReact from 'google-map-react';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import {createMuiTheme, withStyles, makeStyles} from '@material-ui/core/styles';
-import {ThemeProvider} from '@material-ui/styles';
 import gpslogo from './gpsicon.svg';
 import Marker from './Marker';
 import Modal from './Modal';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 
+
 ////mapStyles JSON generated at Snazzymaps.com
 const mapStyles = require('./GoogleMapStyles.json');
 
-
-
 class MapPage extends Component {
-    ////STATE controls modal, diet filter, and stores user location
+    ////STATE controls modal, diet filter, and holds user location
     state={
         modalIsShowing: false,
         show: 'all',
@@ -69,35 +66,19 @@ class MapPage extends Component {
         })
     }
 
-  
-
-
-
-
     render() {
     ////CONDITIONAL RENDERING ACCORDING TO FILTER
-        let restaurantsArray; //hold restaurants to be shown
+        let restaurantsArray = this.props.store.restaurantsReducer;
 
-    ////default is to render all approved restaurants
-        if(this.state.show == 'all'){
-            restaurantsArray = this.props.store.restaurantsReducer.map((item, index) => {
-                return (
-                    <Marker key={index} className="test"
-                    lat={item.lat}
-                    lng={item.lng}
-                    modalToggle={this.handleModal}
-                    item={item}
-                    />
-                ) 
+        const diet= this.state.show;
+
+        if(diet !== 'all'){
+            restaurantsArray = this.props.store.restaurantsReducer.filter((item, index) => {
+                return item[diet] === true;
             })
-    }
-
-    ////if vegan diet is selected, show vegan restaurants
-    if(this.state.show == 'vegan'){
-        let veganRestaurants = this.props.store.restaurantsReducer.filter((item, index) => {
-            return item.vegan === true;
-        })
-        restaurantsArray = veganRestaurants.map((item, index) => {
+        }
+       
+       const renderThesePins =  restaurantsArray.map((item, index) => {
             return (
                 <Marker key={index} className="test"
                 lat={item.lat}
@@ -106,43 +87,8 @@ class MapPage extends Component {
                 item={item}
                 />
             ) 
-        })
-    }
-
-    ////if gluten_free is selected, show gluten_free restaurants
-    if(this.state.show == 'gluten_free'){
-        let gfRestaurants = this.props.store.restaurantsReducer.filter((item, index) => {
-            return item.gluten_free === true;
-        })
-        restaurantsArray = gfRestaurants.map((item, index) => {
-            return (
-                <Marker key={index} className="test"
-                lat={item.lat}
-                lng={item.lng}
-                modalToggle={this.handleModal}
-                item={item}
-                />
-            ) 
-        })
-    }
-
-    ////if keto is selected, show keto restaurants
-    if(this.state.show == 'keto'){
-        let ketoRestaurants = this.props.store.restaurantsReducer.filter((item, index) => {
-            return item.keto === true;
-        })
-        restaurantsArray = ketoRestaurants.map((item, index) => {
-            return (
-                <Marker key={index} className="test"
-                    lat={item.lat}
-                    lng={item.lng}
-                    modalToggle={this.handleModal}
-                    item={item}
-                />
-            ) 
-        })
-    }
-
+    })
+       
     ////user's latitude and longitude will be used for pin
     const userLat = this.state.lat;
     const userLng = this.state.lng;
@@ -159,13 +105,13 @@ class MapPage extends Component {
                 <div  style={{ height: '93vh', width: '100%', bottom: '0px'}}>
                     {detailsPane} 
                         <GoogleMapReact
-                        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
-                        defaultCenter={this.props.center}
-                        defaultZoom={this.props.zoom}
-                        options={{
-                        styles: mapStyles}}>
-            
-                            {restaurantsArray} 
+                            bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
+                            defaultCenter={this.props.center}
+                            defaultZoom={this.props.zoom}
+                            options={{
+                            styles: mapStyles}}>
+                
+                            {renderThesePins}
         
                             <div className="user-pin"
                                 lat={this.state.lat}

@@ -4,7 +4,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class EditPage extends Component {
 
-    ////We store edit-in-progress in the state
+    ////We store edit-in-progress in state
     state = {
         name:'',
         address: '',
@@ -24,7 +24,7 @@ class EditPage extends Component {
         this.props.dispatch({type: 'GET_EDIT', payload:this.props.match.params.id});
     }
 
-    ////change handlers for form
+    ////change handlers for form fields
     handleChangeInputText(event, dataKey) {
         const fieldValue = event.target.value;
         this.setState({

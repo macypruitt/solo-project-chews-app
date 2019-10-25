@@ -28,6 +28,7 @@ class SubmitPage extends Component {
     componentDidMount(){
         window.location.href = "http://chews-me.herokuapp.com/#/suggest";
     }
+
     handleChangeInputText(event, dataKey) {
         const fieldValue = event.target.value;
         this.setState({
@@ -46,6 +47,7 @@ class SubmitPage extends Component {
     handleClickSubmit = (event) => {
        
         this.props.dispatch({type:'SEND_SUBMIT', payload: this.state});
+        ////SweetAlert modal upon submission
         Swal.fire({
                 text: 'Thanks for your suggestion!',
                 type: 'success',
@@ -88,13 +90,11 @@ class SubmitPage extends Component {
                 />
                 <br/>
                 <TextField
-                    
                     label="Description"
                     multiline
                     rowsMax="8"
                     className="suggest-input"
                     onChange={(event) => this.handleChangeInputText(event, 'description')}
-                    
                     margin="normal"
                 />
                 </div>
