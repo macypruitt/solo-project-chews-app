@@ -87,7 +87,7 @@ class MapPage extends Component {
                 item={item}
                 />
             ) 
-    })
+        })
        
     ////user's latitude and longitude will be used for pin
     const userLat = this.state.lat;
@@ -103,7 +103,9 @@ class MapPage extends Component {
         <div className="map-page">
             <div className="map-spacer"></div>
                 <div  style={{ height: '93vh', width: '100%', bottom: '0px'}}>
+
                     {detailsPane} 
+                    
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
                             defaultCenter={this.props.center}
