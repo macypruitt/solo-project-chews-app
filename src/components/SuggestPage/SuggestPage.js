@@ -127,6 +127,15 @@ class SubmitPage extends Component {
                         }
                         label="Gluten-free"
                     />
+                    <FormControlLabel
+                        control={
+                            <Checkbox value="true" 
+                                checked={this.state.blk} 
+                                onChange={(event) => this.handleCheckbox(event, 'blk')} value="true"
+                                color="secondary" />
+                        }
+                        label="Gluten-free"
+                    />
                 </div>
                 <br/>              
                 <Button 

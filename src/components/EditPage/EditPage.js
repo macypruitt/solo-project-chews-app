@@ -16,6 +16,7 @@ class EditPage extends Component {
         keto:'',
         gluten_free:'',
         vegan: '',
+        blk: '',
         approved: ''
     };
 
@@ -80,6 +81,9 @@ class EditPage extends Component {
         }
         if(this.state.gluten_free !==''){
             submitThisObject.gluten_free = this.state.gluten_free;
+        }
+        if(this.state.gluten_free !==''){
+            submitThisObject.blk = this.state.blk;
         }
         if(this.state.approved !==''){
             submitThisObject.approved = this.state.approved;
