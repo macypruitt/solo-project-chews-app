@@ -56,7 +56,7 @@ router.post('/recaptcha', (req, res) => {
     console.log(dataObject);
 
     const queryText = `INSERT INTO "restaurants" 
-    ("name","address","description","keto","gluten_free","vegan","approved","lat","lng")
+    ("name","address","description","keto","gluten_free","vegan","blk","approved","lat","lng")
     VALUES $1, $2, $3, $4, $5, $6, $7, $8, $9;`;
 
     pool.query (queryText, [dataObject.name, 
@@ -65,6 +65,7 @@ router.post('/recaptcha', (req, res) => {
                             dataObject.keto,
                             dataObject.gluten_free,
                             dataObject.vegan,
+                            dataObject.blk,
                             dataObject.approved,
                             dataObject.lat,
                             dataObject.lng])
