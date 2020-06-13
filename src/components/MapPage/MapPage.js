@@ -134,6 +134,8 @@ class MapPage extends Component {
                         <Button
                             onClick={(event) => this.changeFilter(event, 'gluten_free')}>Gluten-Free</Button> 
                         <Button
+                            onClick={(event) => this.changeFilter(event, 'blk')}>BLK</Button> 
+                        <Button
                             onClick={(event) => this.changeFilter(event, 'all')}>All</Button> 
                     </ButtonGroup>
                 
