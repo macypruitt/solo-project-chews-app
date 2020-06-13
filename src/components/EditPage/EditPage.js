@@ -192,6 +192,10 @@ class EditPage extends Component {
                     onChange={(event) => this.handleCheckbox(event, 'vegan')} />
                 <label for="vegan">Vegan</label>
 
+                <input type="checkbox" name="blk" value="true" id="vegan"
+                    onChange={(event) => this.handleCheckbox(event, 'blk')} />
+                <label for="blk">BLK</label>
+
                 <br/>
 
                 <input type="checkbox" name="approved" value="true" id="approved"
