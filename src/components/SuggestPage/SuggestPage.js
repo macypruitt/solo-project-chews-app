@@ -134,7 +134,7 @@ class SubmitPage extends Component {
                                 onChange={(event) => this.handleCheckbox(event, 'blk')} value="true"
                                 color="secondary" />
                         }
-                        label="Gluten-free"
+                        label="BLK"
                     />
                 </div>
                 <br/>              
