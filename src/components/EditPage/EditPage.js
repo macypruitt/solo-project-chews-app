@@ -110,6 +110,7 @@ class EditPage extends Component {
             keto:'',
             gluten_free:'',
             vegan: '',
+            blk: ''
         }
 
         if(this.props.store.editReducer[0] != null){
@@ -192,10 +193,11 @@ class EditPage extends Component {
                     onChange={(event) => this.handleCheckbox(event, 'vegan')} />
                 <label for="vegan">Vegan</label>
 
-                <input type="checkbox" name="blk" value="true" id="vegan"
+                <input type="checkbox" name="blk" value="true" id="blk"
                     onChange={(event) => this.handleCheckbox(event, 'blk')} />
                 <label for="blk">BLK</label>
 
+                <br/>
                 <br/>
 
                 <input type="checkbox" name="approved" value="true" id="approved"
