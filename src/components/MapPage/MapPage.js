@@ -7,18 +7,18 @@ import Marker from './Marker';
 import Modal from './Modal';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
-
-
-////mapStyles JSON generated at Snazzymaps.com
 const mapStyles = require('./GoogleMapStyles.json');
 
 class MapPage extends Component {
-    ////STATE controls modal, diet filter, and holds user location
-    state={
+
+    state = {
         modalIsShowing: false,
-        show: 'all',
-        lat: '',
-        lng: '',
+        filterShows: 'all',
+        geolocation: {
+            lat: '',
+            lng: ''
+        }
+
     }
 
     static defaultProps = {
@@ -31,26 +31,27 @@ class MapPage extends Component {
 
 
     componentDidMount(){
-    ////check user's location if available
-        if(navigator.geolocation){
+    //check user's location if available
+        if(navigator && navigator.geolocation){
             navigator.geolocation.getCurrentPosition(this.onPositionReceived);
         }
     }
 
     onPositionReceived = (position) => {
-    ////store user's location in state
         this.setState({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
+            geolocation: {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            }
         })
       }  
 
     handleModal = (event, data) => {
-    ////if modal is closed, open it, and vice versa
+    // if modal is closed, open it, and vice versa
         this.setState(prevState => ({
             modalIsShowing: !prevState.modalIsShowing,
         }), () =>{
-                ////if modal is open, get listing data from reducer
+                // if modal is open, get listing data from reducer
                 if(this.state.modalIsShowing == true){
                     this.props.dispatch({type:'MODAL_INFO', payload: data})
                 }
@@ -59,18 +60,15 @@ class MapPage extends Component {
     }
 
     changeFilter = (event, data) => {
-    ////diet filter buttons change state
         this.setState({
-          ...this.state,
-          show: data
+          filterShows: data
         })
     }
 
     render() {
-    ////CONDITIONAL RENDERING ACCORDING TO FILTER
+        console.log('here', this.state)
         let restaurantsArray = this.props.store.restaurantsReducer;
-
-        const diet= this.state.show;
+        const diet = this.state.filterShows;
 
         if(diet !== 'all'){
             restaurantsArray = this.props.store.restaurantsReducer.filter((item, index) => {
@@ -89,11 +87,11 @@ class MapPage extends Component {
             ) 
         })
        
-    ////user's latitude and longitude will be used for pin
+    // user's latitude and longitude will be used for pin
     const userLat = this.state.lat;
     const userLng = this.state.lng;
     
-    ////MODAL pops up depending on state
+    // MODAL pops up depending on state
     let detailsPane = <div></div>
     if(this.state.modalIsShowing){
         detailsPane = <Modal id="modal" modalToggle={this.handleModal}></Modal>
@@ -116,8 +114,8 @@ class MapPage extends Component {
                             {renderThesePins}
         
                             <div className="user-pin"
-                                lat={this.state.lat}
-                                lng={this.state.lng}>
+                                lat={this.state.geolocation.lat}
+                                lng={this.state.geolocation.lng}>
                                     <img src={gpslogo}></img>
                             </div>
 

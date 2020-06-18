@@ -118,5 +118,17 @@
                 "visibility": "on"
             }
         ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "saturation": "2"
+            },
+            {
+                "lightness": "39"
+            }
+        ]
     }
 ]
