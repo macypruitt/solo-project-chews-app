@@ -1,7 +1,46 @@
 [
     {
         "featureType": "all",
-        "elementType": "geometry",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffe9aa"
+            },
+            {
+                "lightness": "53"
+            },
+            {
+                "saturation": "-37"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#ffe9aa"
+            },
+            {
+                "saturation": "-21"
+            },
+            {
+                "lightness": "39"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "geometry.fill",
         "stylers": [
             {
                 "color": "#ffe9aa"
@@ -9,58 +48,49 @@
         ]
     },
     {
-        "featureType": "all",
-        "elementType": "labels.text",
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffe9aa"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
         "stylers": [
             {
                 "visibility": "simplified"
-            },
-            {
-                "hue": "#00a2ff"
-            },
-            {
-                "saturation": "43"
-            },
-            {
-                "lightness": "-24"
-            },
-            {
-                "gamma": "1.28"
             }
         ]
     },
     {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "gamma": 0.01
-            },
-            {
-                "lightness": 40
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "saturation": -31
-            },
-            {
-                "lightness": -33
-            },
-            {
-                "weight": 2
-            },
-            {
-                "gamma": 0.8
-            }
-        ]
-    },
-    {
-        "featureType": "all",
+        "featureType": "road.arterial",
         "elementType": "labels.icon",
         "stylers": [
             {
@@ -69,77 +99,11 @@
         ]
     },
     {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 30
-            },
-            {
-                "saturation": 30
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "saturation": 20
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 20
-            },
-            {
-                "saturation": -20
-            }
-        ]
-    },
-    {
-        "featureType": "road",
+        "featureType": "transit",
         "elementType": "all",
         "stylers": [
             {
-                "saturation": "11"
-            },
-            {
-                "lightness": "-11"
-            },
-            {
-                "weight": "1.08"
-            },
-            {
-                "gamma": "4.65"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 10
-            },
-            {
-                "saturation": -30
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "saturation": 25
-            },
-            {
-                "lightness": 25
+                "visibility": "off"
             }
         ]
     },
@@ -148,7 +112,10 @@
         "elementType": "all",
         "stylers": [
             {
-                "lightness": -20
+                "color": "#00a2ff"
+            },
+            {
+                "visibility": "on"
             }
         ]
     }
