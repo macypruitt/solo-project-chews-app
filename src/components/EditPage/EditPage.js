@@ -4,7 +4,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class EditPage extends Component {
 
-    ////We store edit-in-progress in state
+    // State holds edit-in-progress
     state = {
         name:'',
         address: '',
@@ -21,11 +21,11 @@ class EditPage extends Component {
     };
 
     componentDidMount(){
-        ////GET the single listing to edit
+        // GET the single listing to edit
         this.props.dispatch({type: 'GET_EDIT', payload:this.props.match.params.id});
     }
 
-    ////change handlers for form fields
+    // change handlers for form fields
     handleChangeInputText(event, dataKey) {
         const fieldValue = event.target.value;
         this.setState({
@@ -52,7 +52,7 @@ class EditPage extends Component {
      }
 
     consolidateEdit(){
-        ////Starting with the original listing, we add any modifications from state
+        // Starting with the original listing, we add any modifications from state
         let submitThisObject = this.props.store.editReducer[0];
         
         if(this.state.name !==''){
@@ -98,7 +98,7 @@ class EditPage extends Component {
     }
 
     render() {
-        ////listingFromDatabase object prevents error if GET request hasn't returned yet
+        // listingFromDatabase object prevents error if GET request hasn't returned yet
         let listingFromDatabase = {
             name:'',
             address: '',

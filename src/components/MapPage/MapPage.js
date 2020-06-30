@@ -27,8 +27,7 @@ class MapPage extends Component {
             lng: -94.59
         },
         zoom: 12
-  };
-
+    };
 
     componentDidMount(){
     //check user's location if available
@@ -86,10 +85,6 @@ class MapPage extends Component {
                 />
             ) 
         })
-       
-    // user's latitude and longitude will be used for pin
-    const userLat = this.state.lat;
-    const userLng = this.state.lng;
     
     // MODAL pops up depending on state
     let detailsPane = <div></div>

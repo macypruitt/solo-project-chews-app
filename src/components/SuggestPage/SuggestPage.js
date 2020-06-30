@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import FormControl from '@material-ui/core/FormControl';
-import ReCAPTCHA from "react-google-recaptcha";
-
-////styles
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
 
 class SubmitPage extends Component {
     state = {
@@ -22,12 +18,9 @@ class SubmitPage extends Component {
         keto: false,
         gluten_free: false,
         vegan: false,
+        blk: false,
         submitted: '',
     };
-
-    componentDidMount(){
-        window.location.href = "http://chews-me.herokuapp.com/#/suggest";
-    }
 
     handleChangeInputText(event, dataKey) {
         const fieldValue = event.target.value;
@@ -45,9 +38,8 @@ class SubmitPage extends Component {
     }
 
     handleClickSubmit = (event) => {
-       
         this.props.dispatch({type:'SEND_SUBMIT', payload: this.state});
-        ////SweetAlert modal upon submission
+        // SweetAlert modal upon submission
         Swal.fire({
                 text: 'Thanks for your suggestion!',
                 type: 'success',
@@ -68,80 +60,83 @@ class SubmitPage extends Component {
       }
 
     render() {
-
         return (
             <div className="submit-view">
                 <div className="map-spacer"></div>
                 <h2>Submit a suggestion for Chews</h2>
+
                 <FormControl className="form-control">
                     <div className="form-text-inputs">
-                    <div className="g-recaptcha" 
-                    data-sitekey="6LdzzroUAAAAAGgoJZLxBpHglPMYn4aaYGppydZL"></div>
-                <TextField
-                    label="Name"
-                    className="suggest-input"
-                    onChange={(event) => this.handleChangeInputText(event, 'name')}
-                />
-                <br/>
-                <TextField
-                    label="Address"
-                    className="suggest-input"
-                    onChange={(event) => this.handleChangeInputText(event, 'address')}
-                />
-                <br/>
-                <TextField
-                    label="Description"
-                    multiline
-                    rowsMax="8"
-                    className="suggest-input"
-                    onChange={(event) => this.handleChangeInputText(event, 'description')}
-                    margin="normal"
-                />
-                </div>
-                <br/>
-                <div className="checkboxes">
-                    <FormControlLabel
-                        control={
-                            <Checkbox value="true" 
-                                checked={this.state.keto} 
-                                onChange={(event) => this.handleCheckbox(event, 'keto')} value="true"
-                                color="secondary" />
-                        }
-                        label="Keto"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox value="true" 
-                                checked={this.state.vegan} 
-                                onChange={(event) => this.handleCheckbox(event, 'vegan')} value="true"
-                                color="secondary" />
-                        }
-                        label="Vegan"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox value="true" 
-                                checked={this.state.gluten_free} 
-                                onChange={(event) => this.handleCheckbox(event, 'gluten_free')} value="true"
-                                color="secondary" />
-                        }
-                        label="Gluten-free"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox value="true" 
-                                checked={this.state.blk} 
-                                onChange={(event) => this.handleCheckbox(event, 'blk')} value="true"
-                                color="secondary" />
-                        }
-                        label="BLK"
-                    />
-                </div>
-                <br/>              
-                <Button 
-                    onClick={this.handleClickSubmit} 
-                    type="submit">Submit
-                </Button>
+                        <div className="g-recaptcha" 
+                            data-sitekey="6LdzzroUAAAAAGgoJZLxBpHglPMYn4aaYGppydZL">
+                        </div>
+                        <TextField
+                            label="Name"
+                            className="suggest-input"
+                            onChange={(event) => this.handleChangeInputText(event, 'name')}
+                        />
+                        <br/>
+                        <TextField
+                            label="Address"
+                            className="suggest-input"
+                            onChange={(event) => this.handleChangeInputText(event, 'address')}
+                        />
+                        <br/>
+                        <TextField
+                            label="Description"
+                            multiline
+                            rowsMax="8"
+                            className="suggest-input"
+                            onChange={(event) => this.handleChangeInputText(event, 'description')}
+                            margin="normal"
+                        />
+                    </div>
+                    <br/>
+
+                    <div className="checkboxes">
+                        <FormControlLabel
+                            control={
+                                <Checkbox value="true" 
+                                    checked={this.state.keto} 
+                                    onChange={(event) => this.handleCheckbox(event, 'keto')} value="true"
+                                    color="secondary" />
+                            }
+                            label="Keto"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox value="true" 
+                                    checked={this.state.vegan} 
+                                    onChange={(event) => this.handleCheckbox(event, 'vegan')} value="true"
+                                    color="secondary" />
+                            }
+                            label="Vegan"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox value="true" 
+                                    checked={this.state.gluten_free} 
+                                    onChange={(event) => this.handleCheckbox(event, 'gluten_free')} value="true"
+                                    color="secondary" />
+                            }
+                            label="Gluten-free"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox value="true" 
+                                    checked={this.state.blk} 
+                                    onChange={(event) => this.handleCheckbox(event, 'blk')} value="true"
+                                    color="secondary" />
+                            }
+                            label="Black-owned"
+                        />
+                    </div>
+                    <br/> 
+
+                    <Button 
+                        onClick={this.handleClickSubmit} 
+                        type="submit">Submit
+                    </Button>
 
                 </FormControl>
             </div>
