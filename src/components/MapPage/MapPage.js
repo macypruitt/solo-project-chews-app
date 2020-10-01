@@ -7,6 +7,7 @@ import Marker from './Marker';
 import Modal from './Modal';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
+import Grow from '@material-ui/core/Grow';
 const mapStyles = require('./GoogleMapStyles.json');
 
 class MapPage extends Component {
@@ -18,7 +19,6 @@ class MapPage extends Component {
             lat: '',
             lng: ''
         }
-
     }
 
     static defaultProps = {
@@ -46,11 +46,9 @@ class MapPage extends Component {
       }  
 
     handleModal = (event, data) => {
-    // if modal is closed, open it, and vice versa
         this.setState(prevState => ({
             modalIsShowing: !prevState.modalIsShowing,
-        }), () =>{
-                // if modal is open, get listing data from reducer
+        }), () => {
                 if(this.state.modalIsShowing == true){
                     this.props.dispatch({type:'MODAL_INFO', payload: data})
                 }
@@ -65,7 +63,6 @@ class MapPage extends Component {
     }
 
     render() {
-        console.log('here', this.state)
         let restaurantsArray = this.props.store.restaurantsReducer;
         const diet = this.state.filterShows;
 
@@ -85,53 +82,75 @@ class MapPage extends Component {
                 />
             ) 
         })
-    
-    // MODAL pops up depending on state
-    let detailsPane = <div></div>
-    if(this.state.modalIsShowing){
-        detailsPane = <Modal id="modal" modalToggle={this.handleModal}></Modal>
-    }
+
+        const categories = [
+            {
+                label: 'Keto',
+                enum: 'keto'
+            },
+            {
+                label: 'Vegan',
+                enum: 'vegan'
+            },
+            {
+                label: 'Gluten-Free',
+                enum: 'gluten_free'
+            },
+            {
+                label: 'Black-Owned',
+                enum: 'blk'
+            },
+            {
+                label: 'All',
+                enum: 'all'
+            },
+        ]
    
     return (
         <div className="map-page">
             <div className="map-spacer"></div>
-                <div  style={{ height: '93vh', width: '100%', bottom: '0px'}}>
+            <div style={{ height: '93vh', width: '100%', bottom: '0px' }}>
 
-                    {detailsPane} 
-                    
-                        <GoogleMapReact
-                            bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
-                            defaultCenter={this.props.center}
-                            defaultZoom={this.props.zoom}
-                            options={{
-                            styles: mapStyles}}>
-                
-                            {renderThesePins}
-        
-                            <div className="user-pin"
-                                lat={this.state.geolocation.lat}
-                                lng={this.state.geolocation.lng}>
-                                    <img src={gpslogo}></img>
-                            </div>
+                {this.state.modalIsShowing && <Modal id="modal" modalToggle={this.handleModal} />}
 
-                        </GoogleMapReact>
-                </div>
+                <GoogleMapReact
+                    bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS }}
+                    defaultCenter={this.props.center}
+                    defaultZoom={this.props.zoom}
+                    options={{
+                        styles: mapStyles
+                    }}>
+
+                    {restaurantsArray.map((item, index) => {
+                        return (
+                            <Marker key={index} className="test"
+                                lat={item.lat}
+                                lng={item.lng}
+                                modalToggle={this.handleModal}
+                                item={item}
+                            />
+                        )
+                    })}
+
+                    <div className="user-pin"
+                        lat={this.state.geolocation.lat}
+                        lng={this.state.geolocation.lng}>
+                        <img src={gpslogo}></img>
+                    </div>
+                </GoogleMapReact>
+            </div>
 
             <div className="filter-buttons">
-                
-                    <ButtonGroup size="small" variant="contained" color="primary">
-                        <Button 
-                            onClick={(event) => this.changeFilter(event, 'keto')}>Keto</Button> 
-                        <Button
-                            onClick={(event) => this.changeFilter(event, 'vegan')}>Vegan</Button> 
-                        <Button
-                            onClick={(event) => this.changeFilter(event, 'gluten_free')}>Gluten-Free</Button> 
-                        <Button
-                            onClick={(event) => this.changeFilter(event, 'blk')}>Black-Owned</Button> 
-                        <Button
-                            onClick={(event) => this.changeFilter(event, 'all')}>All</Button> 
-                    </ButtonGroup>
-                
+                <ButtonGroup size="small" variant="contained" color="primary">
+                    {categories.map((cat) => {
+                        return (
+                            <Button 
+                                onClick={(event) => this.changeFilter(event, cat.enum)}>
+                                    {cat.label}
+                            </Button> 
+                        )
+                    })}
+                </ButtonGroup>
             </div>
       </div>
     );

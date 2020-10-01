@@ -46,6 +46,7 @@ class App extends Component {
                         <div className="map-div">
                             <Switch >
                                 <Redirect exact from="/" to="/map" />
+                                
                                 <Route
                                     exact
                                     path="/map"
@@ -75,23 +76,13 @@ class App extends Component {
                                     component={EditPage}
                                 />
                                 
-                                {/* If the user is logged in,they will be redirected to the authRedirect path provided. */}
                                 <ProtectedRoute
                                     exact
                                     path="/login"
                                     authRedirect="/admin"
                                     component={LoginPage}
                                 />
-                                
-                                
-                                {/* <Route
-                                    exact
-                                    path="/registration"
-                                    authRedirect="/registration"
-                                    component={RegisterPage}
-                                /> */}
 
-                                {/* If none of the other routes matched, we will show a 404. */}
                                 <Route render={() => <h1>404</h1>} />
                             </Switch>
                         </div>

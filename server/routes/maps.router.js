@@ -3,12 +3,12 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const axios = require('axios');
 
-
 const googleMapsClient = require('@google/maps').createClient({
     key: process.env.REACT_APP_GOOGLE_MAPS,
     Promise: Promise
 })
-////Sends object to Google Maps API, gets lattitude, longitude, and full address, then submits to database
+
+// Sends object to Google Maps API, gets lattitude, longitude, and full address, then submits to database
 router.post('/', (req, res) => {
     console.log(req.body);
     let dataObject=req.body;

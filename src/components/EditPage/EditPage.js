@@ -45,7 +45,7 @@ class EditPage extends Component {
     }
 
     handleClickSubmit = (event) => {
-        ////On click, we consolidate past and new listing, then PUT in database, then go back to list
+        // On click, we consolidate past and new listing, then PUT in database, then go back to list
         const dispatchObject = this.consolidateEdit();
         this.props.dispatch({type:'PUT_EDIT', payload: dispatchObject});
         this.props.history.push('/admin')

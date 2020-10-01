@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
-////GET LIST OF APPROVED RESTAURANTS
+// GET LIST OF APPROVED RESTAURANTS
 router.get('/approved', (req, res) => {
     const queryText = `SELECT * FROM "restaurants" 
                         WHERE "approved"='true';`
@@ -18,7 +18,7 @@ router.get('/approved', (req, res) => {
         });
 });
 
-////GET LIST OF ALL RESTAURANTS (PENDING AND APPROVED)
+// GET LIST OF ALL RESTAURANTS (PENDING AND APPROVED)
 router.get('/all', (req, res) => {
     const queryText = `SELECT * FROM "restaurants"
                         ORDER BY "approved" ASC;`
@@ -33,7 +33,7 @@ router.get('/all', (req, res) => {
         });
 });
 
-////GET SINGLE RESTAURANT THAT MATCHES ID
+// GET SINGLE RESTAURANT THAT MATCHES ID
 router.get('/single/:id', (req, res) => {
     const queryText = `SELECT * FROM "restaurants"
                         WHERE "restaurants".id=$1;`
@@ -49,7 +49,7 @@ router.get('/single/:id', (req, res) => {
         });
 });
 
-////POST new suggestion to database
+// POST new suggestion to database
 router.post('/', (req, res) => {
     console.log(req.body);
     let dataObject=req.body;
