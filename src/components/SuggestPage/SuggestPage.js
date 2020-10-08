@@ -72,6 +72,7 @@ class SubmitPage extends Component {
                 <br/>
 
                 <FormControl className="form-control">
+                    <div style={{marginTop:'16px'}}>Please fill out all of the following fields:</div>
                     <div className="form-text-inputs">
                         <TextField
                             label="Name"
