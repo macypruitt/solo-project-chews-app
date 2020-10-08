@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import ReCAPTCHA from "react-google-recaptcha";
 
 class SubmitPage extends Component {
     state = {
@@ -20,6 +21,7 @@ class SubmitPage extends Component {
         vegan: false,
         blk: false,
         submitted: '',
+        captcha: ''
     };
 
     handleChangeInputText(event, dataKey) {
@@ -50,26 +52,28 @@ class SubmitPage extends Component {
         }) 
     }
     
-
-    onChange(value) {
-        if(value){
-            this.setState({
-                ...this.state
-            })
-        }
-      }
+    handleCaptcha(value) {
+        this.setState({
+            ...this.state, captcha: true
+        })
+    }
 
     render() {
+        console.log('this.state is', this.state)
         return (
             <div className="submit-view">
                 <div className="map-spacer"></div>
                 <h2>Submit a suggestion for Chews</h2>
+                <div style={{margin:'auto', textAlign:'center', display:'inline-block'}}>
+                    <ReCAPTCHA
+                        sitekey={process.env.REACT_APP_CAPTCHA_SITE_KEY}
+                        onChange={()=> this.handleCaptcha()}
+                    />
+                </div>
+                <br/>
 
                 <FormControl className="form-control">
                     <div className="form-text-inputs">
-                        <div className="g-recaptcha" 
-                            data-sitekey="6LdzzroUAAAAAGgoJZLxBpHglPMYn4aaYGppydZL">
-                        </div>
                         <TextField
                             label="Name"
                             className="suggest-input"
@@ -134,6 +138,8 @@ class SubmitPage extends Component {
                     <br/> 
 
                     <Button 
+                        variant="outlined"
+                        disabled={!this.state.captcha || !this.state.name || !this.state.address}
                         onClick={this.handleClickSubmit} 
                         type="submit">Submit
                     </Button>
