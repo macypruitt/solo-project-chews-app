@@ -32,15 +32,12 @@ class EditPage extends Component {
             ...this.state,
             [dataKey]: fieldValue,
         })
-        console.log(this.state);
     }
 
     handleCheckbox(event,dataKey) {
         this.setState({
             ...this.state,
             [dataKey]: event.target.checked
-        }, () => {
-            console.log(this.state)
         })
     }
 

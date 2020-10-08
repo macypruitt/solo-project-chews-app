@@ -59,7 +59,6 @@ class SubmitPage extends Component {
     }
 
     render() {
-        console.log('this.state is', this.state)
         return (
             <div className="submit-view">
                 <div className="map-spacer"></div>
